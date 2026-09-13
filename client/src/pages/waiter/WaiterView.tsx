@@ -30,7 +30,8 @@ import {
   CreditCard,
   Banknote,
   QrCode,
-  Printer
+  Printer,
+  LogOut
 } from 'lucide-react';
 
 interface CartItem {
@@ -60,7 +61,7 @@ const getProductImage = (product: BranchProductView): string => {
 };
 
 export const WaiterView: React.FC = () => {
-  const { user, currentBranch } = useAuth();
+  const { user, currentBranch, logout } = useAuth();
   const { lastOrderEvent } = useSocket();
 
   // Estados principales
@@ -691,10 +692,23 @@ export const WaiterView: React.FC = () => {
               </div>
             </div>
 
-            {/* Badge de Sede Activa */}
-            <div className="inline-flex items-center gap-1.5 bg-[#fef8f1] border border-sky-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-[#133854]">
-              <Waves className="w-3.5 h-3.5 text-[#f37023]" />
-              <span>{currentBranch?.name}</span>
+            {/* Badge de Sede Activa & Botón Salir */}
+            <div className="flex items-center gap-2">
+              <div className="inline-flex items-center gap-1.5 bg-[#fef8f1] border border-sky-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-[#133854]">
+                <Waves className="w-3.5 h-3.5 text-[#f37023]" />
+                <span>{currentBranch?.name}</span>
+              </div>
+              <button
+                onClick={() => {
+                  if (confirm('¿Deseas cerrar sesión?')) {
+                    logout();
+                  }
+                }}
+                className="p-1.5 sm:p-2 text-[#ba1a1a] hover:text-red-700 hover:bg-[#ffdad6]/60 rounded-full transition-colors shrink-0 flex items-center justify-center border border-red-200/60"
+                title="Cerrar sesión"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </header>
@@ -1414,12 +1428,20 @@ export const WaiterView: React.FC = () => {
             <Waves className="w-5 h-5" />
             <span className="text-[10px]">Mesas</span>
           </button>
-          <div className="py-1 text-slate-400 font-bold flex flex-col items-center gap-0.5">
-            <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] font-black">
-              {user?.name.charAt(0) || 'M'}
-            </span>
-            <span className="text-[10px] truncate max-w-[65px]">{user?.name}</span>
-          </div>
+          <button 
+            onClick={() => {
+              if (confirm('¿Cerrar sesión de mozo?')) {
+                logout();
+              }
+            }}
+            className="py-1 text-slate-500 hover:text-red-600 font-bold flex flex-col items-center gap-0.5 group"
+            title="Cerrar sesión"
+          >
+            <div className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-black group-hover:bg-red-200 transition-colors">
+              <LogOut className="w-3 h-3" />
+            </div>
+            <span className="text-[10px] truncate max-w-[65px] text-red-600">Salir</span>
+          </button>
         </div>
       </nav>
 
