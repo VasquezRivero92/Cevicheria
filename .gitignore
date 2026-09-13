@@ -3,11 +3,6 @@ node_modules/
 .pnp
 .pnp.js
 
-# Production build outputs
-dist/
-build/
-out/
-
 # Environment files
 .env
 .env.local
@@ -34,7 +29,9 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Temporary files
+# Temporary and data files
 *.tmp
 *.temp
 scratch/
+data/
+
