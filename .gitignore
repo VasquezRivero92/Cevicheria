@@ -35,3 +35,12 @@ Thumbs.db
 scratch/
 data/
 
+# Android & APK builds (No subir al repositorio)
+*.apk
+*.aab
+/android/
+/apk/
+android-webview/
+android-app/
+release/
+
