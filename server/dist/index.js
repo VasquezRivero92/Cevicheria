@@ -46,14 +46,14 @@ if (clientDistPath) {
     });
 }
 const PORT = Number(process.env.SERVER_PORT || process.env.PORT || 4000);
-const HOST = process.env.SERVER_IP || '0.0.0.0';
+const HOST = '0.0.0.0';
 async function start() {
     try {
         // Sembrado de datos cevicheros
         await seedInitialData();
-        server.listen(PORT, HOST, () => {
+        server.listen(PORT, '0.0.0.0', () => {
             console.log(`=================================================`);
-            console.log(`🐟 CevichApp Server iniciado en ${HOST}:${PORT}`);
+            console.log(`🐟 CevichApp Server iniciado en puerto ${PORT}`);
             console.log(`🌐 Base de datos: ${process.env.DATABASE_PROVIDER || 'local'} (Repository Pattern)`);
             console.log(`⚡ WebSocket listo para comandas en tiempo real`);
             console.log(`=================================================`);
