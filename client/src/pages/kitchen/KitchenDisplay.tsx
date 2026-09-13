@@ -321,33 +321,33 @@ export const KitchenDisplay: React.FC = () => {
                 )}
               </div>
 
-              {/* Botones de Acción de Cocina */}
+              {/* Botones de Acción de Cocina: Grandes para pulsación táctil con guantes o dedos húmedos */}
               <div className="p-3 bg-[#0e1e32] border-t border-[#274966] flex items-center gap-2">
                 {order.status === 'PENDING' && (
                   <button
                     onClick={() => handleUpdateOrderStatus(order.id, 'PREPARING')}
-                    className="flex-1 bg-[#133854] hover:bg-[#1a4b70] border border-[#274966] text-white font-['Epilogue',sans-serif] font-black text-xs py-2.5 rounded-2xl shadow-md transition-all active:scale-[0.98]"
+                    className="flex-1 min-h-[48px] bg-[#133854] hover:bg-[#1a4b70] border border-[#274966] text-white font-['Epilogue',sans-serif] font-black text-xs sm:text-sm py-3 rounded-2xl shadow-md transition-all active:scale-[0.98]"
                   >
-                    EMPEZAR PREPARACIÓN
+                    EMPEZAR PREPARACIÓN ⏱️
                   </button>
                 )}
 
                 {order.status === 'PREPARING' && (
                   <button
                     onClick={() => handleUpdateOrderStatus(order.id, 'READY')}
-                    className="flex-1 bg-[#fc772a] hover:bg-[#e05e16] text-white font-['Epilogue',sans-serif] font-black text-xs py-2.5 rounded-2xl shadow-lg shadow-[#fc772a]/30 transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                    className="flex-1 min-h-[48px] bg-[#fc772a] hover:bg-[#e05e16] text-white font-['Epilogue',sans-serif] font-black text-xs sm:text-sm py-3 rounded-2xl shadow-lg shadow-[#fc772a]/30 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
-                    ¡TODO LISTO PARA SERVIR! 🛎️
+                    <CheckCircle2 className="w-5 h-5" />
+                    <span>¡TODO LISTO! SERVIR 🛎️</span>
                   </button>
                 )}
 
                 {order.status === 'READY' && (
                   <button
                     onClick={() => handleUpdateOrderStatus(order.id, 'DELIVERED')}
-                    className="flex-1 bg-[#2ed573] hover:bg-[#26af5f] text-slate-950 font-['Epilogue',sans-serif] font-black text-xs py-2.5 rounded-2xl shadow-md transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                    className="flex-1 min-h-[48px] bg-[#2ed573] hover:bg-[#26af5f] text-slate-950 font-['Epilogue',sans-serif] font-black text-xs sm:text-sm py-3 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
-                    MARCAR ENTREGADO A MESA
+                    <span>MARCAR ENTREGADO A MESA</span>
                   </button>
                 )}
               </div>

@@ -206,70 +206,70 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         </div>
       </div>
 
-      {/* Barra móvil inferior de navegación rápida para celulares */}
-      <div className="md:hidden flex items-center justify-around border-t border-[#133854]/10 bg-[#fef8f1] py-1.5 px-2 text-xs">
+      {/* Barra móvil inferior de navegación rápida para celulares - Botones grandes para pulgares */}
+      <div className="md:hidden flex items-center justify-around border-t border-[#133854]/10 bg-[#fef8f1] py-2 px-2 text-xs">
         {isAdmin && (
           <button
             onClick={() => onNavigate('admin')}
-            className={`flex flex-col items-center py-1 px-3 rounded-xl transition-all ${
+            className={`min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all ${
               currentView === 'admin' ? 'text-[#00223a] font-bold bg-[#f3ede6]' : 'text-[#73777e]'
             }`}
           >
-            <LayoutDashboard className="w-4 h-4 text-[#fc772a]" />
-            <span className="text-[10px] mt-0.5">Admin</span>
+            <LayoutDashboard className="w-5 h-5 text-[#fc772a]" />
+            <span className="text-[11px] mt-0.5 font-bold">Admin</span>
           </button>
         )}
         {isAdmin && (
           <button
             onClick={() => onNavigate('menu-matrix')}
-            className={`flex flex-col items-center py-1 px-3 rounded-xl transition-all ${
+            className={`min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all ${
               currentView === 'menu-matrix' ? 'text-[#00223a] font-bold bg-[#f3ede6]' : 'text-[#73777e]'
             }`}
           >
-            <Store className="w-4 h-4 text-[#fc772a]" />
-            <span className="text-[10px] mt-0.5">Carta</span>
+            <Store className="w-5 h-5 text-[#fc772a]" />
+            <span className="text-[11px] mt-0.5 font-bold">Carta</span>
           </button>
         )}
         {(isAdmin || user.role === 'mozo') && (
           <button
             onClick={() => onNavigate('waiter')}
-            className={`flex flex-col items-center py-1 px-3 rounded-xl transition-all ${
+            className={`min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all ${
               currentView === 'waiter' ? 'text-[#00223a] font-bold bg-[#f3ede6]' : 'text-[#73777e]'
             }`}
           >
-            <Smartphone className="w-4 h-4 text-[#fc772a]" />
-            <span className="text-[10px] mt-0.5">Mesero</span>
+            <Smartphone className="w-5 h-5 text-[#fc772a]" />
+            <span className="text-[11px] mt-0.5 font-bold">Mesero</span>
           </button>
         )}
         {(isAdmin || user.role === 'cocina') && (
           <button
             onClick={() => onNavigate('kitchen')}
-            className={`flex flex-col items-center py-1 px-3 rounded-xl transition-all ${
+            className={`min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all ${
               currentView === 'kitchen' ? 'text-[#00223a] font-bold bg-[#f3ede6]' : 'text-[#73777e]'
             }`}
           >
-            <ChefHat className="w-4 h-4 text-[#fc772a]" />
-            <span className="text-[10px] mt-0.5">Cocina</span>
+            <ChefHat className="w-5 h-5 text-[#fc772a]" />
+            <span className="text-[11px] mt-0.5 font-bold">Cocina</span>
           </button>
         )}
         {(isAdmin || user.role === 'cajero') && (
           <button
             onClick={() => onNavigate('cashier')}
-            className={`flex flex-col items-center py-1 px-3 rounded-xl transition-all ${
+            className={`min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all ${
               currentView === 'cashier' ? 'text-[#00223a] font-bold bg-[#f3ede6]' : 'text-[#73777e]'
             }`}
           >
-            <Receipt className="w-4 h-4 text-[#fc772a]" />
-            <span className="text-[10px] mt-0.5">Caja</span>
+            <Receipt className="w-5 h-5 text-[#fc772a]" />
+            <span className="text-[11px] mt-0.5 font-bold">Caja</span>
           </button>
         )}
         <button
           onClick={logout}
-          className="flex flex-col items-center py-1 px-2.5 rounded-xl transition-all text-[#ba1a1a] hover:bg-[#ffdad6]/50 active:scale-95"
+          className="min-h-[48px] flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all text-[#ba1a1a] hover:bg-[#ffdad6]/50 active:scale-95"
           title="Cerrar sesión"
         >
-          <LogOut className="w-4 h-4 text-[#ba1a1a]" />
-          <span className="text-[10px] mt-0.5 font-bold">Salir</span>
+          <LogOut className="w-5 h-5 text-[#ba1a1a]" />
+          <span className="text-[11px] mt-0.5 font-extrabold">Salir</span>
         </button>
       </div>
     </header>

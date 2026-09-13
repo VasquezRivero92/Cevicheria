@@ -41,3 +41,18 @@ body {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+/* Optimización móvil y landscape para botones táctiles */
+@media (pointer: coarse) {
+  button, select, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+  }
+}
+
+/* Modo horizontal (Landscape) en móviles: no ocultar botones flotantes */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .landscape-compact {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+}

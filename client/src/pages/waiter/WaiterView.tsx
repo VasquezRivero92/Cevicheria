@@ -504,25 +504,25 @@ export const WaiterView: React.FC = () => {
               <label className="block text-xs font-['Epilogue',sans-serif] font-bold text-slate-800 mb-1.5 uppercase tracking-wide">
                 Método de Pago:
               </label>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-4 gap-2.5">
                 {[
-                  { id: 'YAPE', label: 'Yape', icon: <QrCode className="w-4 h-4 text-purple-600" /> },
-                  { id: 'PLIN', label: 'Plin', icon: <QrCode className="w-4 h-4 text-cyan-600" /> },
-                  { id: 'TARJETA', label: 'Tarjeta POS', icon: <CreditCard className="w-4 h-4 text-blue-600" /> },
-                  { id: 'EFECTIVO', label: 'Efectivo', icon: <Banknote className="w-4 h-4 text-emerald-600" /> }
+                  { id: 'YAPE', label: 'Yape', icon: <QrCode className="w-5 h-5 text-purple-600" /> },
+                  { id: 'PLIN', label: 'Plin', icon: <QrCode className="w-5 h-5 text-cyan-600" /> },
+                  { id: 'TARJETA', label: 'Tarjeta POS', icon: <CreditCard className="w-5 h-5 text-blue-600" /> },
+                  { id: 'EFECTIVO', label: 'Efectivo', icon: <Banknote className="w-5 h-5 text-emerald-600" /> }
                 ].map((m) => (
                   <button
                     key={m.id}
                     type="button"
                     onClick={() => setBillingPaymentMethod(m.id as PaymentMethod)}
-                    className={`p-2 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
+                    className={`min-h-[52px] p-2 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 transition-all ${
                       billingPaymentMethod === m.id
-                        ? 'bg-[#133854] text-white font-bold border-[#133854] shadow-md ring-2 ring-[#fc772a]'
+                        ? 'bg-[#133854] text-white font-bold border-[#fc772a] shadow-md ring-2 ring-[#fc772a]/40 scale-102'
                         : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {m.icon}
-                    <span className="text-[10px] font-bold">{m.label}</span>
+                    <span className="text-[11px] font-extrabold">{m.label}</span>
                   </button>
                 ))}
               </div>
@@ -530,24 +530,25 @@ export const WaiterView: React.FC = () => {
 
             {/* Si es efectivo: cálculo de vuelto */}
             {billingPaymentMethod === 'EFECTIVO' && (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3 text-xs">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 mb-3 text-xs">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex-1">
-                    <label className="block text-[11px] font-bold text-amber-900 mb-0.5">
+                    <label className="block text-[11px] font-bold text-amber-900 mb-1">
                       Efectivo recibido (S/.):
                     </label>
                     <input
                       type="number"
                       step="0.50"
+                      min="0"
                       value={billingCashGiven}
                       onChange={(e) => setBillingCashGiven(e.target.value)}
-                      placeholder={`Ej. ${(Math.ceil(billingOrder.totalAmount / 10) * 10).toFixed(2)}`}
-                      className="w-full bg-white border border-amber-300 rounded-lg px-2.5 py-1.5 text-xs font-black text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#f37023]"
+                      placeholder="Ej. 100.00"
+                      className="w-full bg-white border border-amber-300 rounded-xl px-3 py-2.5 text-sm font-black text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#f37023]"
                     />
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-amber-800 font-semibold block">Vuelto:</span>
-                    <span className="text-lg font-['Epilogue',sans-serif] font-black text-[#f37023]">
+                    <span className="text-[10px] uppercase font-black text-slate-400 block">Vuelto:</span>
+                    <span className="text-xl font-['Epilogue',sans-serif] font-black text-[#f37023]">
                       S/ {Math.max(0, (parseFloat(billingCashGiven) || 0) - billingOrder.totalAmount).toFixed(2)}
                     </span>
                   </div>
@@ -556,31 +557,31 @@ export const WaiterView: React.FC = () => {
             )}
 
             {/* Acciones de Cobro */}
-            <div className="space-y-2 pt-1 border-t border-slate-100">
+            <div className="space-y-2.5 pt-1.5 border-t border-slate-100">
               <button
                 disabled={isBillingProcessing}
                 onClick={handleProcessOrderPayment}
-                className="w-full bg-gradient-to-r from-[#fc772a] to-[#ff6f00] hover:from-[#ff6f00] hover:to-[#e65100] active:scale-[0.99] disabled:opacity-50 text-white font-['Epilogue',sans-serif] font-black py-3 rounded-2xl shadow-xl shadow-orange-500/20 flex items-center justify-center gap-2 text-sm transition-all"
+                className="w-full min-h-[50px] bg-gradient-to-r from-[#fc772a] to-[#ff6f00] hover:from-[#ff6f00] hover:to-[#e65100] active:scale-[0.99] disabled:opacity-50 text-white font-['Epilogue',sans-serif] font-black py-3.5 rounded-2xl shadow-xl shadow-orange-500/20 flex items-center justify-center gap-2 text-sm sm:text-base transition-all"
               >
-                <CheckCircle2 className="w-4 h-4" />
+                <CheckCircle2 className="w-5 h-5" />
                 <span>
                   {isBillingProcessing ? 'Registrando cobro...' : `REGISTRAR PAGO S/ ${billingOrder.totalAmount.toFixed(2)}`}
                 </span>
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="flex-1 min-h-[44px] bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-2xl text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
-                  <Printer className="w-3.5 h-3.5 text-slate-500" />
+                  <Printer className="w-4 h-4 text-slate-500" />
                   <span>Imprimir Pre-cuenta</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setBillingOrder(null)}
-                  className="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-500 font-semibold py-2 rounded-xl text-xs transition-colors"
+                  className="flex-1 min-h-[44px] bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold py-2.5 rounded-2xl text-xs transition-colors border border-slate-200"
                 >
                   Volver / Cerrar
                 </button>
@@ -796,8 +797,8 @@ export const WaiterView: React.FC = () => {
             </div>
           </div>
 
-          {/* Grid de Mesas */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+          {/* Grid de Mesas: 2 columnas en móvil vertical, 3-4 en horizontal y tablet, botones generosos */}
+          <div className="grid grid-cols-2 landscape:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-5">
             {tableNumbers.map((num) => {
               const orderForTable = activeOrders.find((o) => o.tableNumber === num);
               const isOccupied = !!orderForTable;
@@ -819,13 +820,13 @@ export const WaiterView: React.FC = () => {
                 <div
                   key={num}
                   onClick={() => setSelectedTable(num)}
-                  className={`min-h-[140px] rounded-3xl p-3 flex flex-col justify-between items-center transition-all transform active:scale-98 shadow-sm border-2 cursor-pointer ${cardBg}`}
+                  className={`min-h-[160px] sm:min-h-[175px] rounded-3xl p-3.5 sm:p-4 flex flex-col justify-between items-center transition-all transform active:scale-95 shadow-sm hover:shadow-md border-2 cursor-pointer select-none ${cardBg}`}
                 >
                   <div className="w-full flex justify-between items-center">
-                    <span className="text-[10px] font-black tracking-wider text-slate-400">MESA</span>
+                    <span className="text-[11px] font-black tracking-wider text-slate-400">MESA</span>
                     {isOccupied && (
                       <span
-                        className={`w-2.5 h-2.5 rounded-full ${
+                        className={`w-3 h-3 rounded-full ${
                           orderForTable.status === 'READY'
                             ? 'bg-emerald-500 animate-ping'
                             : orderForTable.status === 'PAID'
@@ -838,59 +839,59 @@ export const WaiterView: React.FC = () => {
                     )}
                   </div>
 
-                  <span className="font-['Epilogue',sans-serif] text-3xl sm:text-4xl font-black tracking-tight my-1">
+                  <span className="font-['Epilogue',sans-serif] text-4xl sm:text-5xl font-black tracking-tight my-1.5">
                     {num < 10 ? `0${num}` : num}
                   </span>
 
                   <div className="w-full text-center">
                     {isOccupied ? (
-                      <div className="space-y-1">
-                        <span className="text-[11px] font-black text-[#133854] block truncate">
+                      <div className="space-y-1.5 w-full">
+                        <span className="text-xs sm:text-sm font-black text-[#133854] block truncate">
                           S/ {orderForTable.totalAmount.toFixed(2)}
                         </span>
                         <div className="flex justify-center">
                           {getStatusBadge(orderForTable.status)}
                         </div>
 
-                        {/* Botón directo en la tarjeta cuando está listo para servir */}
+                        {/* Botón táctil grande cuando está listo para servir */}
                         {orderForTable.status === 'READY' && (
                           <button
                             type="button"
                             onClick={(e) => handleMarkAsDelivered(orderForTable.id, e)}
-                            className="mt-1.5 w-full bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-[10px] font-black py-1 px-1 rounded-xl shadow-sm flex items-center justify-center gap-1 transition-all"
+                            className="mt-2 w-full min-h-[44px] bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black py-2.5 px-2 rounded-2xl shadow-md flex items-center justify-center gap-1.5 transition-all"
                             title="Confirmar platos servidos a los comensales"
                           >
                             <span>🍽️ Ya lo serví</span>
                           </button>
                         )}
 
-                        {/* Botón directo en la tarjeta cuando ya se sirvió para cobrar con resumen */}
+                        {/* Botón táctil grande cuando ya se sirvió para cobrar con resumen */}
                         {orderForTable.status === 'DELIVERED' && (
                           <button
                             type="button"
                             onClick={(e) => handleOpenBillingModal(orderForTable, e)}
-                            className="mt-1.5 w-full bg-[#133854] hover:bg-[#1a4b70] active:scale-95 text-white text-[10px] font-black py-1 px-1 rounded-xl shadow-sm flex items-center justify-center gap-1 transition-all border border-[#274966]"
+                            className="mt-2 w-full min-h-[44px] bg-[#133854] hover:bg-[#1a4b70] active:scale-95 text-white text-xs font-black py-2.5 px-2 rounded-2xl shadow-md flex items-center justify-center gap-1.5 transition-all border border-[#274966]"
                             title="Ver resumen de lo consumido y cobrar la cuenta"
                           >
-                            <Receipt className="w-3 h-3 text-[#fc772a]" />
+                            <Receipt className="w-4 h-4 text-[#fc772a]" />
                             <span>💳 Cobrar</span>
                           </button>
                         )}
 
-                        {/* Botón directo en la tarjeta cuando está pagado para liberar */}
+                        {/* Botón táctil grande cuando está pagado para liberar */}
                         {orderForTable.status === 'PAID' && (
                           <button
                             type="button"
                             onClick={(e) => handleFreeTable(orderForTable.id, num, e)}
-                            className="mt-1.5 w-full bg-cyan-700 hover:bg-cyan-800 active:scale-95 text-white text-[10px] font-black py-1 px-1 rounded-xl shadow-sm flex items-center justify-center gap-1 transition-all"
+                            className="mt-2 w-full min-h-[44px] bg-cyan-700 hover:bg-cyan-800 active:scale-95 text-white text-xs font-black py-2.5 px-2 rounded-2xl shadow-md flex items-center justify-center gap-1.5 transition-all"
                             title="Desocupar y liberar mesa"
                           >
-                            <span>🧹 Liberar</span>
+                            <span>🧹 Liberar Mesa</span>
                           </button>
                         )}
                       </div>
                     ) : (
-                      <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">
+                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block">
                         Disponible
                       </span>
                     )}
@@ -1210,7 +1211,7 @@ export const WaiterView: React.FC = () => {
                         <span className="text-[10px] font-bold text-slate-400 block mb-1">
                           Nivel de Ají Limo:
                         </span>
-                        <div className="grid grid-cols-4 gap-1">
+                        <div className="grid grid-cols-4 gap-1.5">
                           {[
                             { id: 'SIN_AJI', label: 'Sin Ají' },
                             { id: 'MEDIO', label: 'Medio' },
@@ -1226,10 +1227,10 @@ export const WaiterView: React.FC = () => {
                                   [product.id]: sp.id as SpiceLevel
                                 }));
                               }}
-                              className={`py-1 rounded-lg text-[10px] font-bold transition-all border ${
+                              className={`py-2 px-1 rounded-xl text-[11px] font-bold transition-all border ${
                                 currentSpice === sp.id
-                                  ? 'bg-[#f37023] text-white border-[#f37023] shadow-sm'
-                                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                                  ? 'bg-[#f37023] text-white border-[#f37023] shadow-sm ring-2 ring-[#fc772a]/30'
+                                  : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                               }`}
                             >
                               {sp.label}
@@ -1240,52 +1241,52 @@ export const WaiterView: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Acciones de la tarjeta */}
-                  <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
+                  {/* Acciones de la tarjeta: Botones grandes y ergonómicos para pulgares */}
+                  <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                     <button
                       type="button"
                       onClick={() => handleOpenCustomization(product)}
                       disabled={!isAvailable}
-                      className="text-slate-500 hover:text-[#133854] text-xs font-bold flex items-center gap-1 transition-colors"
+                      className="min-h-[44px] px-3 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-[#133854] text-xs font-bold flex items-center gap-1.5 transition-colors"
                       title="Elegir guarniciones o notas especiales"
                     >
-                      <Sliders className="w-3.5 h-3.5" />
+                      <Sliders className="w-4 h-4 text-[#fc772a]" />
                       <span>Guarnición</span>
                     </button>
 
                     {isAvailable ? (
                       countInCart > 0 ? (
-                        <div className="flex items-center gap-2 bg-[#fef8f1] border border-[#f37023]/40 rounded-xl p-1 shadow-sm">
+                        <div className="flex items-center gap-2 bg-[#fef8f1] border-2 border-[#f37023] rounded-2xl p-1 shadow-sm">
                           <button
                             type="button"
                             onClick={() => handleQuickDecrease(product.id)}
-                            className="w-7 h-7 rounded-lg bg-white text-slate-700 font-black flex items-center justify-center hover:bg-slate-100 border border-slate-200"
+                            className="w-10 h-10 rounded-xl bg-white text-slate-800 font-black flex items-center justify-center hover:bg-slate-100 border border-slate-200 active:scale-90 transition-transform"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-4 h-4" />
                           </button>
-                          <span className="font-['Epilogue',sans-serif] font-black text-sm text-[#133854] px-1">
+                          <span className="font-['Epilogue',sans-serif] font-black text-base text-[#133854] px-2">
                             {countInCart}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleQuickAdd(product)}
-                            className="w-7 h-7 rounded-lg bg-[#f37023] text-white font-black flex items-center justify-center hover:bg-[#ff6f00]"
+                            className="w-10 h-10 rounded-xl bg-[#f37023] text-white font-black flex items-center justify-center hover:bg-[#ff6f00] active:scale-90 transition-transform shadow-md"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <button
                           type="button"
                           onClick={() => handleQuickAdd(product)}
-                          className="bg-[#f37023] hover:bg-[#ff6f00] text-white font-['Epilogue',sans-serif] font-black text-xs px-3.5 py-2 rounded-xl shadow-md shadow-orange-500/20 flex items-center gap-1.5 transition-all transform active:scale-95"
+                          className="min-h-[44px] bg-[#f37023] hover:bg-[#ff6f00] text-white font-['Epilogue',sans-serif] font-black text-xs sm:text-sm px-4 py-2.5 rounded-2xl shadow-md shadow-orange-500/20 flex items-center gap-2 transition-all transform active:scale-95"
                         >
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>Agregar</span>
+                          <Plus className="w-4 h-4" />
+                          <span>+ Agregar</span>
                         </button>
                       )
                     ) : (
-                      <span className="text-[11px] font-bold text-slate-400">No disponible</span>
+                      <span className="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-xl">No disponible</span>
                     )}
                   </div>
                 </div>
@@ -1401,24 +1402,24 @@ export const WaiterView: React.FC = () => {
         </aside>
       )}
 
-      {/* BARRA DE NAVEGACIÓN INFERIOR (ESTILO APP STITCH) */}
-      <nav aria-label="Navegación inferior móvil" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-20 py-2 px-4 shadow-lg">
-        <div className="max-w-md mx-auto grid grid-cols-4 gap-1 text-center text-xs">
+      {/* BARRA DE NAVEGACIÓN INFERIOR (ESTILO APP STITCH) - Ergonómica para pulgares */}
+      <nav aria-label="Navegación inferior móvil" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-30 py-2.5 px-4 shadow-lg pb-safe">
+        <div className="max-w-md mx-auto grid grid-cols-4 gap-2 text-center text-xs">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="py-1 text-[#f37023] font-bold flex flex-col items-center gap-0.5"
+            className="min-h-[48px] py-1.5 px-1 text-[#f37023] font-bold flex flex-col items-center justify-center gap-1 rounded-2xl active:bg-orange-50 transition-colors"
           >
-            <UtensilsCrossed className="w-5 h-5" />
-            <span className="text-[10px]">Carta</span>
+            <UtensilsCrossed className="w-6 h-6" />
+            <span className="text-[11px] font-extrabold">Carta</span>
           </button>
           <button 
             onClick={() => setIsCartOpen(true)}
-            className="py-1 text-slate-500 hover:text-slate-900 font-bold flex flex-col items-center gap-0.5 relative"
+            className="min-h-[48px] py-1.5 px-1 text-slate-600 hover:text-slate-900 font-bold flex flex-col items-center justify-center gap-1 rounded-2xl active:bg-slate-100 transition-colors relative"
           >
-            <ShoppingBag className="w-5 h-5" />
-            <span className="text-[10px]">Pedido</span>
+            <ShoppingBag className="w-6 h-6 text-[#fc772a]" />
+            <span className="text-[11px] font-extrabold">Pedido</span>
             {totalCartItemsCount > 0 && (
-              <span className="absolute top-0 right-6 bg-[#f37023] text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute top-0 right-4 bg-[#f37023] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
                 {totalCartItemsCount}
               </span>
             )}
@@ -1428,10 +1429,10 @@ export const WaiterView: React.FC = () => {
               if (cart.length > 0 && !confirm('¿Cambiar de mesa? Hay productos no enviados.')) return;
               setSelectedTable(null);
             }}
-            className="py-1 text-slate-500 hover:text-slate-900 font-bold flex flex-col items-center gap-0.5"
+            className="min-h-[48px] py-1.5 px-1 text-slate-600 hover:text-slate-900 font-bold flex flex-col items-center justify-center gap-1 rounded-2xl active:bg-slate-100 transition-colors"
           >
-            <Waves className="w-5 h-5" />
-            <span className="text-[10px]">Mesas</span>
+            <Waves className="w-6 h-6 text-sky-600" />
+            <span className="text-[11px] font-extrabold">Mesas</span>
           </button>
           <button 
             onClick={() => {
@@ -1439,13 +1440,13 @@ export const WaiterView: React.FC = () => {
                 logout();
               }
             }}
-            className="py-1 text-slate-500 hover:text-red-600 font-bold flex flex-col items-center gap-0.5 group"
+            className="min-h-[48px] py-1.5 px-1 text-red-600 hover:text-red-700 font-bold flex flex-col items-center justify-center gap-1 rounded-2xl active:bg-red-50 transition-colors"
             title="Cerrar sesión"
           >
-            <div className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-black group-hover:bg-red-200 transition-colors">
-              <LogOut className="w-3 h-3" />
+            <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-black">
+              <LogOut className="w-3.5 h-3.5" />
             </div>
-            <span className="text-[10px] truncate max-w-[65px] text-red-600">Salir</span>
+            <span className="text-[11px] font-extrabold text-red-600">Salir</span>
           </button>
         </div>
       </nav>
@@ -1576,14 +1577,14 @@ export const WaiterView: React.FC = () => {
               />
             </div>
 
-            {/* Botón Confirmar */}
+            {/* Botón Confirmar: Grande y visible con un toque */}
             <button
               onClick={handleAddCustomizedToCart}
-              className="w-full bg-[#f37023] hover:bg-[#ff6f00] text-white font-['Epilogue',sans-serif] font-black py-3 rounded-2xl shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2"
+              className="w-full min-h-[52px] bg-gradient-to-r from-[#f37023] to-[#ff6f00] hover:from-[#ff6f00] hover:to-[#e65100] active:scale-[0.99] text-white font-['Epilogue',sans-serif] font-black py-3.5 rounded-2xl shadow-xl shadow-orange-500/30 flex items-center justify-center gap-2.5 text-sm sm:text-base transition-all"
             >
-              <span>Agregar a la comanda</span>
+              <span>AGREGAR A LA COMANDA</span>
               <span>•</span>
-              <span>S/ {(customizingProduct.effectivePrice * customQty).toFixed(2)}</span>
+              <span className="bg-white/20 px-2 py-0.5 rounded-lg text-sm">S/ {(customizingProduct.effectivePrice * customQty).toFixed(2)}</span>
             </button>
           </div>
         </div>
