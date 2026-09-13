@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cevichería Restaurant La Barra - Sabrosísimo</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fef8f1",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#80a2c2",
+            "tertiary-fixed-dim": "#7ad1f7",
+            "on-tertiary-container": "#4fa9cd",
+            "tertiary": "#002430",
+            "on-secondary-container": "#5e2300",
+            "surface-dim": "#dfd9d2",
+            "on-primary": "#ffffff",
+            "primary-container": "#133854",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ede7e0",
+            "primary-fixed": "#cee5ff",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#e7e2db",
+            "error": "#ba1a1a",
+            "primary": "#00223a",
+            "surface-container": "#f3ede6",
+            "outline-variant": "#c2c7ce",
+            "on-surface-variant": "#42474d",
+            "on-tertiary-fixed": "#001f2a",
+            "on-tertiary-fixed-variant": "#004d64",
+            "secondary-container": "#fc772a",
+            "primary-fixed-dim": "#a8caec",
+            "inverse-on-surface": "#f6f0e9",
+            "on-secondary-fixed": "#351000",
+            "secondary-fixed-dim": "#ffb693",
+            "surface-container-low": "#f9f3ec",
+            "outline": "#73777e",
+            "secondary-fixed": "#ffdbcc",
+            "secondary": "#a04100",
+            "surface-tint": "#40617f",
+            "on-primary-fixed": "#001d32",
+            "on-background": "#1d1b17",
+            "on-secondary-fixed-variant": "#7a3000",
+            "on-surface": "#1d1b17",
+            "surface-variant": "#e7e2db",
+            "inverse-primary": "#a8caec",
+            "tertiary-container": "#003b4d",
+            "tertiary-fixed": "#bde9ff",
+            "inverse-surface": "#32302c",
+            "on-primary-fixed-variant": "#274966",
+            "surface": "#fef8f1",
+            "background": "#fef8f1",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "margin": "3rem",
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "margin-mobile": "1.25rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Epilogue"],
+            "display-lg": ["Epilogue"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Epilogue"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Epilogue"],
+            "label-badge": ["Epilogue"],
+            "display-lg-mobile": ["Epilogue"],
+            "headline-lg-mobile": ["Epilogue"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "title-lg": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-badge": ["12px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .wave-separator {
+      background-image: radial-gradient(circle at 10px -5px, transparent 12px, #ffffff 13px);
+      background-size: 20px 20px;
+    }
+    .ocean-shadow {
+      box-shadow: 0 10px 25px -4px rgba(19, 56, 84, 0.08);
+    }
+    .ocean-shadow-lg {
+      box-shadow: 0 14px 30px -4px rgba(19, 56, 84, 0.16);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-container selection:text-on-secondary pb-36">
+<!-- TOP APP BAR (Shared Component Anchor) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-surface shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container p-0.5 shadow-sm flex items-center justify-center shrink-0 border border-primary-fixed-dim/30">
+<img alt="Logo La Barra Sabrosisimo" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1VvPAmu8npT2M1Erl82iZGrWPy4Lcye5kdmlM6VHUCd97MuXk_G3aIieESk69WX-050BHsDcqep4WOFP_7AFqc1RFpW3uuU9DGG8lVCHRc4Cru0fREXUPrZnrqkgPchE8x6HQ3tAtpNl6S_s9WOxX7V38DtSMFyg_6UGcqIGcI-Gzy63bXr7zCBV6AaclbmW-fO8oLBTdehxs5Uwty1gKbAFShWoyob1KdtnWX37203IHoMaxD-fp2BMX8"/>
+</div>
+<div>
+<h1 class="text-title-lg font-title-lg text-primary font-bold tracking-tight leading-none">
+          La Barra Sabrosísimo
+        </h1>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium text-[11px] leading-tight">Marisquería &amp; Barra Cevechera</span>
+</div>
+</div>
+</div>
+<!-- Right Top Section: Table Pill -->
+<div class="flex items-center gap-1.5 bg-primary-container text-surface-bright px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+<span class="text-label-badge font-label-badge tracking-wider">Mesa 04</span>
+</div>
+</header>
+<!-- SUBHEADER / MARITIME DOCK INFO BAR -->
+<div class="mt-16 px-4 pt-3 pb-1 flex flex-col gap-2.5">
+<!-- Branch Selector & Fresh Catch Stamp -->
+<div class="flex items-center justify-between gap-2">
+<!-- Sede Dropdown Switcher -->
+<div class="inline-flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-full border border-primary-container/10 ocean-shadow">
+<span class="material-symbols-outlined text-secondary text-[16px]">waves</span>
+<span class="text-body-sm font-body-sm font-bold text-primary">Sede Principal</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span>
+</div>
+<!-- Fresh Docking Status Badge -->
+<div class="flex items-center gap-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-full text-body-sm font-body-sm text-[11px]">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]" style="font-variation-settings: 'FILL' 1;">sailing</span>
+<span class="font-bold">Pesca del Día: 6:30 AM</span>
+</div>
+</div>
+<!-- Welcome & Maritime Cheerful Greeting -->
+<div class="bg-gradient-to-r from-primary-container via-[#1b4b70] to-tertiary-container rounded-xl p-4 text-surface-bright relative overflow-hidden ocean-shadow">
+<!-- Decorative background icon art -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-6 text-surface-bright/10 text-[96px] pointer-events-none select-none">anchor</span>
+<div class="relative z-10 max-w-[85%]">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-container text-on-secondary text-label-badge font-label-badge mb-1">
+<span>¡COSTA VIVA!</span>
+<span class="material-symbols-outlined text-[13px]">wb_sunny</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-surface-bright font-extrabold tracking-tight leading-tight">
+          ¡Sabor Bravazo frente al Pacífico!
+        </h2>
+<p class="text-body-sm font-body-sm text-primary-fixed text-[13px] mt-1">
+          Limón recién exprimido, pesca artesanal fresca y ají limo picadito al momento.
+        </p>
+</div>
+</div>
+</div>
+<!-- CATEGORY TABS / HORIZONTAL FILTER CHIPS -->
+<nav class="sticky top-14 z-40 bg-surface/95 backdrop-blur-md pt-3 pb-2 px-4 border-b border-surface-container-high/60">
+<div class="flex items-center gap-2 overflow-x-auto custom-scrollbar no-scrollbar">
+<!-- Active Chip: Ceviches -->
+<button class="shrink-0 flex items-center gap-1.5 bg-primary-container text-on-primary px-4 py-2 rounded-full font-label-badge text-label-badge shadow-sm transition-transform active:scale-95 border border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">set_meal</span>
+<span>Ceviches</span>
+</button>
+<!-- Leches de Pantera -->
+<button class="shrink-0 flex items-center gap-1.5 bg-surface-container-low text-primary hover:bg-surface-container px-3.5 py-2 rounded-full font-label-badge text-label-badge border border-outline-variant/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_bar</span>
+<span>Leches de Pantera</span>
+</button>
+<!-- Dúos & Tríos -->
+<button class="shrink-0 flex items-center gap-1.5 bg-surface-container-low text-primary hover:bg-surface-container px-3.5 py-2 rounded-full font-label-badge text-label-badge border border-outline-variant/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-primary">lunch_dining</span>
+<span>Dúos &amp; Tríos</span>
+</button>
+<!-- Chicharrones -->
+<button class="shrink-0 flex items-center gap-1.5 bg-surface-container-low text-primary hover:bg-surface-container px-3.5 py-2 rounded-full font-label-badge text-label-badge border border-outline-variant/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-amber-700">tapas</span>
+<span>Chicharrones</span>
+</button>
+<!-- Bebidas -->
+<button class="shrink-0 flex items-center gap-1.5 bg-surface-container-low text-primary hover:bg-surface-container px-3.5 py-2 rounded-full font-label-badge text-label-badge border border-outline-variant/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-sky-600">sports_bar</span>
+<span>Bebidas</span>
+</button>
+</div>
+</nav>
+<!-- MAIN MENU DISHES CONTAINER -->
+<main class="px-4 pt-3 flex flex-col gap-4 max-w-xl mx-auto w-full">
+<!-- Section Heading -->
+<div class="flex items-center justify-between pt-1">
+<div>
+<h3 class="text-title-lg font-title-lg text-primary font-bold tracking-tight">Nuestra Barra Marina</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Selecciona el nivel de picante y acompaña con canchita</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container text-2xl">restaurant_menu</span>
+</div>
+<!-- DISH 1: Ceviche Clásico Carretillero -->
+<article class="bg-surface-container-lowest rounded-xl ocean-shadow overflow-hidden border border-outline-variant/25 flex flex-col transition-all hover:ocean-shadow-lg">
+<div class="relative w-full h-48 sm:h-52 overflow-hidden bg-surface-container">
+<!-- Injected Dish 1 Image -->
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Vibrant Peruvian classic ceviche served in an authentic rustic clay bowl on a seaside wooden terrace with Pacific ocean waves visible in the blurry background. Fresh raw white corvina fish marinated in glossy lime citrus leche de tigre, vibrant red chili rocoto rings, fresh green cilantro leaves, golden glazed sweet potato cubes, and giant tender Andean corn kernels. Sun-drenched natural lighting, vivid rich food photography style, fresh coastal vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv8Ugq9nFMGxFmWpS_KqdkTgM9T2HjVIE2E-AQDkQChXdd5yJzJCZGnOuiID1zrR-E5bqbi25Vh4XRJEqS6Su6vvEjFHiYx13Fsxcilgx3OyIph8JBJcM66SQSKdM-MDVjsWTDdJDRBTcJyzWPjAiajwQAhi2uK6B7Y20uRqiLYsVxU43Ullgjyzx8NmZAZXAGIq94PR8gLcUELCVHlHTsGgtwGe9M6vWdiiCfsgKW5ZQ8Lz49_P-sNpL2MvFWzjvrn_ITf2CmNUI"/>
+<!-- Badges on image -->
+<div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5">
+<span class="bg-emerald-600/90 backdrop-blur-sm text-surface-bright text-label-badge font-label-badge px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+            RECOMENDADO
+          </span>
+<span class="bg-primary-container/85 backdrop-blur-sm text-tertiary-fixed text-label-badge font-label-badge px-2 py-1 rounded-full">
+            Corvina Fresca
+          </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-surface-container-lowest/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-primary font-headline-md text-headline-md font-bold shadow-sm">
+          S/ 38.00
+        </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="text-title-lg font-title-lg text-primary font-bold">Ceviche Clásico Carretillero</h4>
+<span class="material-symbols-outlined text-secondary text-xl">favorite_border</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 leading-relaxed">
+            Pescado blanco del día recién fileteado, leche de tigre al instante con toque de ají limo, choclo desgranado tierno, camote glaseado y canchita chulpi bien crocante.
+          </p>
+</div>
+<!-- Spicy Level Selector -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-surface-container-high/60">
+<div class="flex items-center justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span>
+              Nivel de Ají:
+            </span>
+<span class="text-[11px] text-on-surface-variant font-medium">Personaliza tu plato</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5">
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant hover:border-primary" type="button">
+              Sin Ají
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border-2 border-secondary bg-secondary/10 text-secondary font-extrabold shadow-sm" type="button">
+              Medio ✓
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant hover:border-secondary" type="button">
+              Bravo
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-red-600 hover:border-red-600" type="button">
+              Fuego 🔥
+            </button>
+</div>
+</div>
+<!-- Add Button -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant text-[12px]">
+<span class="material-symbols-outlined text-sky-600 text-[16px]">schedule</span>
+<span>Prep: 6-8 min</span>
+</div>
+<button class="flex items-center gap-1.5 bg-secondary-container hover:bg-secondary text-on-secondary font-label-lg text-label-lg px-4 py-2 rounded-full shadow-md transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Agregar +</span>
+</button>
+</div>
+</div>
+</article>
+<!-- DISH 2: Dúo Marino Clásico -->
+<article class="bg-surface-container-lowest rounded-xl ocean-shadow overflow-hidden border border-outline-variant/25 flex flex-col transition-all hover:ocean-shadow-lg">
+<div class="relative w-full h-48 sm:h-52 overflow-hidden bg-surface-container">
+<!-- Injected Dish 2 Image -->
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Traditional Peruvian Duo Marino seafood platter served on a grand artisanal ceramic platter atop a rustic wooden table. Half of the plate features fresh mixed ceviche with raw fish and tender octopus in leche de tigre, while the other half displays golden crispy chicharron calamari rings and fried yuca with tartar sauce. Decorated with lime halves and red onion ribbons in vibrant restaurant setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8_zwG-eJDxn5dNRfCWZRWUg42HUBQEB1balzszqpeR_XXPzzP7iqO_YwF4C9tvWOx5cFEBBo4wgQcEoU9MtXbUr3ikHZSPV8rpviSEkFKIEsCQUiMXCA_R6gbQixkosFU4maLsp_PXoL3XJesi-hQOk8YiQwNOCn6fU-omeV_UOiP19eZ5FIzRrB3SpoyiNQDO_Tfi2XfyaYcGnz1BsdNGYzN6-BsA3KnDRLgSHYJ7UV6hI_GSMpz_COdZQ2w-UMY4LN7EPY2iKQ"/>
+<div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5">
+<span class="bg-secondary-container text-on-secondary text-label-badge font-label-badge px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">star</span>
+            EL MÁS PEDIDO
+          </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-surface-container-lowest/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-primary font-headline-md text-headline-md font-bold shadow-sm">
+          S/ 48.00
+        </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="text-title-lg font-title-lg text-primary font-bold">Dúo Marino Clásico</h4>
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 leading-relaxed">
+            La combinación predilecta de la casa: generoso ceviche mixto con chicharrón de calamar crocante al punto, yucas doradas, salsa criolla y salsa tártara artesanal.
+          </p>
+</div>
+<!-- Spicy Level Selector -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-surface-container-high/60">
+<div class="flex items-center justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span>
+              Nivel de Ají:
+            </span>
+<span class="text-[11px] text-secondary font-bold">Bravo Seleccionado</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5">
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant" type="button">
+              Sin Ají
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant" type="button">
+              Medio
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border-2 border-secondary bg-secondary/10 text-secondary font-extrabold shadow-sm" type="button">
+              Bravo ✓
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-red-600" type="button">
+              Fuego 🔥
+            </button>
+</div>
+</div>
+<!-- Quantity Control / Added State -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-full border border-primary-container/10">
+<span class="text-body-sm font-body-sm text-primary font-bold">1 en pedido</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary active:scale-95 bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-md text-title-md font-bold text-primary px-1">1</span>
+<button class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- DISH 3: Leche de Pantera Especial -->
+<article class="bg-surface-container-lowest rounded-xl ocean-shadow overflow-hidden border border-outline-variant/25 flex flex-col transition-all hover:ocean-shadow-lg">
+<div class="relative w-full h-48 sm:h-52 overflow-hidden bg-surface-container">
+<!-- Injected Dish 3 Image -->
+<img alt="Peruvian Leche de Pantera served in an elegant cocktail glass, spicy citrus seafood ceviche marinade with crunchy chanchita corn, calamari strips, shrimp, lime wedge, fresh presentation, vibrant culinary food photo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqSS-fnl0GiA-1mm5j4kWnR7A9fmw4tAXqHuBksOpouAHShPEHVs_C1NEkzavWhSiZ2Ba4SlzOC6_Hxh8e2ca2XaLQHytRmctK7kT4yesaSFu7TaLGoNCLWNLTFq0yj9VNXSdm5TAXhuA-Y-ilUlP5qzho_Mg4DHlo2I5sclMR-_H3eJBw8vhd_kw16E_hAihfrs6KpNPcIkgC_d-svpnVEKxKE2iV9-b2XmtFy8i5dJ3ot7rif6BduPpp_VOWgqmAKX0LN30vR8g"/>
+<div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5">
+<span class="bg-primary-container text-surface-bright text-label-badge font-label-badge px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary-fixed">bolt</span>
+            AFRODISÍACO
+          </span>
+</div>
+<div class="absolute bottom-2 right-2 bg-surface-container-lowest/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-primary font-headline-md text-headline-md font-bold shadow-sm">
+          S/ 26.00
+        </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="text-title-lg font-title-lg text-primary font-bold">Leche de Pantera Especial</h4>
+<span class="material-symbols-outlined text-secondary text-xl">favorite_border</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 leading-relaxed">
+            Copa concentrada marina con potente jugo cítrico al rocoto ahumado, langostinos marinados, chicharrón de pota bien tostado y canchita chulpi.
+          </p>
+</div>
+<!-- Spicy Level Selector -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-surface-container-high/60">
+<div class="flex items-center justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span>
+              Nivel de Ají:
+            </span>
+<span class="text-[11px] text-red-600 font-bold">Picor Intenso 🔥</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5">
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant" type="button">
+              Medio
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant" type="button">
+              Bravo
+            </button>
+<button class="py-1 px-1.5 text-center text-label-badge font-label-badge rounded-md border-2 border-red-600 bg-red-50 text-red-700 font-extrabold shadow-sm" type="button">
+              Fuego 🔥 ✓
+            </button>
+</div>
+</div>
+<!-- Quantity Control / Added State -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-full border border-primary-container/10">
+<span class="text-body-sm font-body-sm text-primary font-bold">1 en pedido</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary active:scale-95 bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-md text-title-md font-bold text-primary px-1">1</span>
+<button class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- DISH 4: Chicharrón Mixto Crocante -->
+<article class="bg-surface-container-lowest rounded-xl ocean-shadow overflow-hidden border border-outline-variant/25 flex flex-col transition-all hover:ocean-shadow-lg mb-2">
+<div class="p-4 flex gap-3.5">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="bg-amber-100 text-amber-900 border border-amber-300/80 text-[10px] font-label-badge px-2 py-0.5 rounded-full uppercase">Crujiente</span>
+</div>
+<h4 class="text-title-md font-title-md text-primary font-bold leading-tight">Chicharrón Mixto Crocante</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 text-[13px] leading-snug line-clamp-2">
+              Trozos de pescado del día y mariscos fritos al punto con yuca dorada y tártara marina.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="text-headline-md font-headline-md font-bold text-primary">S/ 42.00</span>
+<button class="flex items-center gap-1 bg-surface-container-low hover:bg-secondary-container hover:text-on-secondary text-primary font-label-badge text-label-badge px-3 py-1.5 rounded-full border border-primary/20 transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Agregar</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-surface-container shrink-0 border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="Peruvian crispy golden fried seafood chicharron mixto featuring fish chunks, calamari rings and golden yuca fries garnished with fresh lime wedges and spicy salsa criolla in a bright sunny seafood restaurant setting, top view modern food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDB2X9w_pkWvciA5UuGOV1xxzOUdaFRIcg_mwiJhNk5VIJ3-uXdB_F8UdlgfUICWUD3I7lvWenJaAtGlw0FpXP-ixXDXLbPsMk73KdSFhwLeBYie30gsU2GJk8GO61m6zH4FuU6zKnaN-yCEn9pkyF-OOJZfiuBtB0m4e_XTtYTnpeWclvm9oH_duoofU0xRY2k-67LopNkLu2nonRTGMlcosig5YotadoexvEQRv80MQxQZS-w23dKH2IHI9D0aQQiqhuUvMy3dw"/>
+</div>
+</div>
+</article>
+<!-- Chef's Table Note / Assurance -->
+<div class="bg-surface-container-low rounded-xl p-3.5 border border-outline-variant/30 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">soup_kitchen</span>
+</div>
+<div>
+<p class="text-body-sm font-body-sm font-bold text-primary">¿Deseas canchita o ají extra?</p>
+<p class="text-body-sm font-body-sm text-[12px] text-on-surface-variant leading-tight">
+          Pídelo desde la pestaña de "Mozo" o agrégalo en las notas de tu orden.
+        </p>
+</div>
+</div>
+</main>
+<!-- STICKY FLOATING ORDER CART BAR -->
+<aside aria-label="Resumen de Orden" class="fixed bottom-16 left-0 right-0 z-40 px-4 py-2 pointer-events-none">
+<div class="max-w-xl mx-auto pointer-events-auto bg-primary text-surface-bright rounded-2xl p-3 shadow-xl border border-tertiary-fixed-dim/20 flex items-center justify-between gap-3 transform transition-all duration-200">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary flex items-center justify-center font-bold relative shadow-md">
+<span class="material-symbols-outlined text-[20px]">shopping_basket</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-surface text-secondary text-[11px] font-extrabold rounded-full flex items-center justify-center border-2 border-primary">
+            2
+          </span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm font-bold leading-tight">2 platos en orden</div>
+<div class="text-[12px] text-primary-fixed-dim font-medium">Mesa 04 · Total: <span class="text-surface-bright font-bold">S/ 74.00</span></div>
+</div>
+</div>
+<button class="flex items-center gap-1.5 bg-secondary-container hover:bg-secondary text-on-secondary px-4 py-2 rounded-full font-label-lg text-label-lg shadow-md transition-all active:scale-95 shrink-0" type="button">
+<span>Ver Pedido</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+<!-- BOTTOM NAVIGATION BAR (Shared Component Anchor) -->
+<!-- Contextual Active: 'Carta' corresponds exactly to the menu destination currently active -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest shadow-lg">
+<!-- Tab 1: Carta (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary rounded-full px-3 py-1.5 transition-all active:scale-95" href="#carta">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">set_meal</span>
+<span class="text-label-badge font-label-badge mt-0.5">Carta</span>
+</a>
+<!-- Tab 2: Pedido (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary transition-colors duration-150 active:scale-95 relative" href="#pedido">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="text-label-badge font-label-badge mt-0.5">Pedido</span>
+<span class="absolute top-1 right-2 w-2 h-2 rounded-full bg-secondary-container"></span>
+</a>
+<!-- Tab 3: Mesa (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary transition-colors duration-150 active:scale-95" href="#mesa">
+<span class="material-symbols-outlined text-[20px]">table_restaurant</span>
+<span class="text-label-badge font-label-badge mt-0.5">Mesa</span>
+</a>
+<!-- Tab 4: Mozo (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary transition-colors duration-150 active:scale-95" href="#mozo">
+<span class="material-symbols-outlined text-[20px]">room_service</span>
+<span class="text-label-badge font-label-badge mt-0.5">Mozo</span>
+</a>
+</nav>
+<!-- Lightweight Micro-interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Interactive chip selectors for spicy levels
+      document.querySelectorAll('article').forEach(card => {
+        const buttons = card.querySelectorAll('.grid button');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            buttons.forEach(b => {
+              b.classList.remove('border-2', 'border-secondary', 'bg-secondary/10', 'text-secondary', 'font-extrabold', 'shadow-sm', 'border-red-600', 'bg-red-50', 'text-red-700');
+              b.classList.add('border-outline-variant/40', 'bg-surface-container-lowest', 'text-on-surface-variant');
+              b.innerText = b.innerText.replace(' ✓', '');
+            });
+            btn.classList.remove('border-outline-variant/40', 'bg-surface-container-lowest', 'text-on-surface-variant');
+            if (btn.innerText.includes('Fuego') || btn.innerText.includes('🔥')) {
+              btn.classList.add('border-2', 'border-red-600', 'bg-red-50', 'text-red-700', 'font-extrabold', 'shadow-sm');
+            } else {
+              btn.classList.add('border-2', 'border-secondary', 'bg-secondary/10', 'text-secondary', 'font-extrabold', 'shadow-sm');
+            }
+            if (!btn.innerText.includes('✓')) {
+              btn.innerText = btn.innerText + ' ✓';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body></html>

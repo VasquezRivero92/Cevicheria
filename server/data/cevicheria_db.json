@@ -1,0 +1,1652 @@
+{
+  "branches": {
+    "branch_principal": {
+      "id": "branch_principal",
+      "name": "La Barra - Sede Principal",
+      "code": "PRINCIPAL",
+      "address": "Local Central - Salón & Barra Marina",
+      "phone": "(01) 456-7890",
+      "tableCount": 16,
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.223Z",
+      "updatedAt": "2026-09-13T00:16:56.224Z"
+    },
+    "branch_sur": {
+      "id": "branch_sur",
+      "name": "La Barra - Sede Sur",
+      "code": "SEDE_SUR",
+      "address": "Av. Principal Marina 340",
+      "phone": "(01) 987-6543",
+      "tableCount": 12,
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.224Z",
+      "updatedAt": "2026-09-13T00:16:56.224Z"
+    }
+  },
+  "users": {
+    "user_admin_general": {
+      "id": "user_admin_general",
+      "username": "admin",
+      "name": "Carlos Mendoza (Administrador General)",
+      "role": "admin_general",
+      "branchIds": [
+        "all"
+      ],
+      "branchId": "all",
+      "pin": "1234",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_admin_principal": {
+      "id": "user_admin_principal",
+      "username": "admin.principal",
+      "name": "Jorge Salazar (Admin Sede Principal)",
+      "role": "admin_local",
+      "branchIds": [
+        "branch_principal"
+      ],
+      "branchId": "branch_principal",
+      "pin": "1001",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_admin_sur": {
+      "id": "user_admin_sur",
+      "username": "admin.sur",
+      "name": "Carla Montes (Admin Sede Sur)",
+      "role": "admin_local",
+      "branchIds": [
+        "branch_sur"
+      ],
+      "branchId": "branch_sur",
+      "pin": "2002",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_mozo_principal": {
+      "id": "user_mozo_principal",
+      "username": "mozo.principal",
+      "name": "Renzo (Mesero Sede Principal)",
+      "role": "mozo",
+      "branchIds": [
+        "branch_principal"
+      ],
+      "branchId": "branch_principal",
+      "pin": "1111",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_mozo_sur": {
+      "id": "user_mozo_sur",
+      "username": "mozo.sur",
+      "name": "Fiorella (Mesera Sede Sur)",
+      "role": "mozo",
+      "branchIds": [
+        "branch_sur"
+      ],
+      "branchId": "branch_sur",
+      "pin": "2222",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_cocina_principal": {
+      "id": "user_cocina_principal",
+      "username": "cocina.principal",
+      "name": "Chef Barra Sede Principal",
+      "role": "cocina",
+      "branchIds": [
+        "branch_principal"
+      ],
+      "branchId": "branch_principal",
+      "pin": "3333",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_cocina_sur": {
+      "id": "user_cocina_sur",
+      "username": "cocina.sur",
+      "name": "Cocina Sede Sur",
+      "role": "cocina",
+      "branchIds": [
+        "branch_sur"
+      ],
+      "branchId": "branch_sur",
+      "pin": "3334",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_caja_principal": {
+      "id": "user_caja_principal",
+      "username": "caja.principal",
+      "name": "Lucía (Caja Sede Principal)",
+      "role": "cajero",
+      "branchIds": [
+        "branch_principal"
+      ],
+      "branchId": "branch_principal",
+      "pin": "5555",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_caja_sur": {
+      "id": "user_caja_sur",
+      "username": "caja.sur",
+      "name": "Manuel (Caja Sede Sur)",
+      "role": "cajero",
+      "branchIds": [
+        "branch_sur"
+      ],
+      "branchId": "branch_sur",
+      "pin": "5556",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "a09542f2-cc08-4045-aa57-db2945962361": {
+      "id": "a09542f2-cc08-4045-aa57-db2945962361",
+      "name": "Andres Lopez",
+      "pin": "7890",
+      "active": true,
+      "username": "mozo.andres",
+      "role": "mozo",
+      "branchId": "branch_principal",
+      "createdAt": "2026-09-12T19:59:07.269Z"
+    },
+    "user_admin_multisede": {
+      "id": "user_admin_multisede",
+      "username": "admin.multisede",
+      "name": "Mario Rivas (Admin Multisede Principal y Sur)",
+      "role": "admin_local",
+      "branchIds": [
+        "branch_principal",
+        "branch_sur"
+      ],
+      "branchId": "branch_principal",
+      "pin": "1002",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "user_mozo_rotativo": {
+      "id": "user_mozo_rotativo",
+      "username": "mozo.rotativo",
+      "name": "Gabriel (Mesero Rotativo Principal + Sur)",
+      "role": "mozo",
+      "branchIds": [
+        "branch_principal",
+        "branch_sur"
+      ],
+      "branchId": "branch_principal",
+      "pin": "1122",
+      "active": true,
+      "createdAt": "2026-09-13T00:16:56.225Z"
+    },
+    "6ee9c9e1-fd2b-425d-9048-eeee1d04848c": {
+      "id": "6ee9c9e1-fd2b-425d-9048-eeee1d04848c",
+      "username": "mozo.test",
+      "name": "Mesero Prueba",
+      "role": "mozo",
+      "branchIds": [
+        "branch_principal",
+        "branch_sur"
+      ],
+      "pin": "9999",
+      "branchId": "branch_principal",
+      "createdAt": "2026-09-12T20:10:31.294Z"
+    },
+    "4d9e0a44-7747-42ca-a1a1-84a1be846c85": {
+      "id": "4d9e0a44-7747-42ca-a1a1-84a1be846c85",
+      "username": "mozo.rotativo2",
+      "name": "Gabriel Mozo Modificado",
+      "role": "mozo",
+      "branchIds": [
+        "branch_principal",
+        "branch_sur"
+      ],
+      "pin": "7777",
+      "active": true,
+      "branchId": "branch_principal",
+      "createdAt": "2026-09-12T20:11:24.549Z",
+      "updatedAt": "2026-09-12T20:30:39.019Z"
+    }
+  },
+  "categories": {
+    "cat_ceviches": {
+      "id": "cat_ceviches",
+      "name": "Ceviches",
+      "slug": "ceviches",
+      "icon": "🐟",
+      "displayOrder": 1,
+      "active": true
+    },
+    "cat_leches": {
+      "id": "cat_leches",
+      "name": "Leches de Tigre & Pantera",
+      "slug": "leches",
+      "icon": "🥤",
+      "displayOrder": 2,
+      "active": true
+    },
+    "cat_duos": {
+      "id": "cat_duos",
+      "name": "Dúos Marinos",
+      "slug": "duos",
+      "icon": "🍽️",
+      "displayOrder": 3,
+      "active": true
+    },
+    "cat_trios": {
+      "id": "cat_trios",
+      "name": "Tríos Marinos",
+      "slug": "trios",
+      "icon": "🍲",
+      "displayOrder": 4,
+      "active": true
+    },
+    "cat_combinados": {
+      "id": "cat_combinados",
+      "name": "Combinados Especiales",
+      "slug": "combinados",
+      "icon": "🥘",
+      "displayOrder": 5,
+      "active": true
+    },
+    "cat_arroces": {
+      "id": "cat_arroces",
+      "name": "Arroces & Chaufas",
+      "slug": "arroces",
+      "icon": "🍚",
+      "displayOrder": 6,
+      "active": true
+    },
+    "cat_jaleas": {
+      "id": "cat_jaleas",
+      "name": "Jaleas & Frituras",
+      "slug": "jaleas",
+      "icon": "🦐",
+      "displayOrder": 7,
+      "active": true
+    },
+    "cat_calientes": {
+      "id": "cat_calientes",
+      "name": "Calientes & Sudados",
+      "slug": "calientes",
+      "icon": "🍲",
+      "displayOrder": 8,
+      "active": true
+    },
+    "cat_bebidas": {
+      "id": "cat_bebidas",
+      "name": "Bebidas & Cervezas",
+      "slug": "bebidas",
+      "icon": "🍺",
+      "displayOrder": 9,
+      "active": true
+    }
+  },
+  "products": {
+    "prod_cev_pescado": {
+      "id": "prod_cev_pescado",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Pescado",
+      "description": "Pesca fresca en dados, leche de tigre natural, cebolla roja, camote y canchita.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_mixto": {
+      "id": "prod_cev_mixto",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche Mixto",
+      "description": "Pescado y mixtura de mariscos frescos en jugo de limón y ají limo.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_pota": {
+      "id": "prod_cev_pota",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Pota",
+      "description": "Tiras de pota suave y fresca en potente leche de tigre.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_pulpo": {
+      "id": "prod_cev_pulpo",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Pulpo",
+      "description": "Pulpo tierno en cortes precisos al estilo cevichero tradicional.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_mixtura": {
+      "id": "prod_cev_mixtura",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche Mixtura",
+      "description": "Selección marina de conchas, calamar, langostinos y pesca.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_conchas_negras": {
+      "id": "prod_cev_conchas_negras",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Conchas Negras",
+      "description": "Conchas negras frescas del norte con su jugo oscuro, limón y ají limo.",
+      "basePrice": 25,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo",
+        "Camote"
+      ],
+      "active": true
+    },
+    "prod_cev_conchas_negras_mixtas": {
+      "id": "prod_cev_conchas_negras_mixtas",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche Conchas Negras Mixtas",
+      "description": "Conchas negras combinadas con pescado o mariscos.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo",
+        "Camote"
+      ],
+      "active": true
+    },
+    "prod_cev_almejas": {
+      "id": "prod_cev_almejas",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Almejas",
+      "description": "Almejas frescas seleccionadas en leche de tigre viva.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_langostino": {
+      "id": "prod_cev_langostino",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Langostino",
+      "description": "Colas de langostinos tiernos marinados al momento.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_conchas_abanico": {
+      "id": "prod_cev_conchas_abanico",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche de Conchas de Abanico",
+      "description": "Conchas de abanico frescas con coral en leche de tigre.",
+      "basePrice": 25,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Camote",
+        "Choclo",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_cev_huancaina": {
+      "id": "prod_cev_huancaina",
+      "categoryId": "cat_ceviches",
+      "name": "Ceviche + Papa a la Huancaína",
+      "description": "El clásico matrimonio peruano: ceviche fresco con papa a la huancaína cremosa.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_leche_pescado": {
+      "id": "prod_leche_pescado",
+      "categoryId": "cat_leches",
+      "name": "Leche de Pescado",
+      "description": "Copa concentrada de leche de tigre con tropezones de pescado fresco.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_leche_mixta": {
+      "id": "prod_leche_mixta",
+      "categoryId": "cat_leches",
+      "name": "Leche Mixta",
+      "description": "Leche de tigre con mixtura de mariscos y chicharrón.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_leche_pota": {
+      "id": "prod_leche_pota",
+      "categoryId": "cat_leches",
+      "name": "Leche de Pota",
+      "description": "Leche de tigre concentrada con pota fresca.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_leche_pantera": {
+      "id": "prod_leche_pantera",
+      "categoryId": "cat_leches",
+      "name": "Leche de Pantera",
+      "description": "Potente leche oscura a base de jugo de conchas negras norteñas.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_leche_pantera_mixta": {
+      "id": "prod_leche_pantera_mixta",
+      "categoryId": "cat_leches",
+      "name": "Leche de Pantera Mixta",
+      "description": "Conchas negras, mariscos y trozos de pescado en copa afrodisíaca.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Choclo"
+      ],
+      "active": true
+    },
+    "prod_duo_mariscos_cev": {
+      "id": "prod_duo_mariscos_cev",
+      "categoryId": "cat_duos",
+      "name": "Dúo: Arroz con Mariscos + Ceviche",
+      "description": "Combinación perfecta de arroz con mariscos meloso y ceviche fresco.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Sarza criolla"
+      ],
+      "active": true
+    },
+    "prod_duo_mariscos_chich": {
+      "id": "prod_duo_mariscos_chich",
+      "categoryId": "cat_duos",
+      "name": "Dúo: Arroz con Mariscos + Chicharrón",
+      "description": "Arroz con mariscos acompañado de chicharrón crocante de pescado.",
+      "basePrice": 15,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Sarza criolla",
+        "Tártara"
+      ],
+      "active": true
+    },
+    "prod_duo_chaufa_cev": {
+      "id": "prod_duo_chaufa_cev",
+      "categoryId": "cat_duos",
+      "name": "Dúo: Chaufa de Mariscos + Ceviche",
+      "description": "Arroz chaufa al wok con mixtura marina y ceviche de pescado.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_duo_chaufa_chich": {
+      "id": "prod_duo_chaufa_chich",
+      "categoryId": "cat_duos",
+      "name": "Dúo: Chaufa de Mariscos + Chicharrón",
+      "description": "Chaufa marino salteado con chicharrón crocante.",
+      "basePrice": 15,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Tártara",
+        "Sarza criolla"
+      ],
+      "active": true
+    },
+    "prod_trio_marino": {
+      "id": "prod_trio_marino",
+      "categoryId": "cat_trios",
+      "name": "Trío Marino",
+      "description": "Arroz con mariscos + Ceviche (o Leche de tigre) + Chicharrón crocante.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Sarza criolla",
+        "Tártara"
+      ],
+      "active": true
+    },
+    "prod_trio_oriental": {
+      "id": "prod_trio_oriental",
+      "categoryId": "cat_trios",
+      "name": "Trío Oriental",
+      "description": "Arroz chaufa de mariscos + Ceviche (o Leche de tigre) + Chicharrón.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita",
+        "Tártara"
+      ],
+      "active": true
+    },
+    "prod_trio_criollo": {
+      "id": "prod_trio_criollo",
+      "categoryId": "cat_trios",
+      "name": "Trío Criollo",
+      "description": "Arroz con pollo + Ceviche (o Leche de tigre) + Chicharrón.",
+      "basePrice": 20,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Huancaína",
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_comb_clasico": {
+      "id": "prod_comb_clasico",
+      "categoryId": "cat_combinados",
+      "name": "Combinado Clásico (7 Colores)",
+      "description": "Tallarín rojo, chanfainita criolla, ceviche fresco, chicharrón y huancaína.",
+      "basePrice": 10,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_comb_naomi": {
+      "id": "prod_comb_naomi",
+      "categoryId": "cat_combinados",
+      "name": "Combinado Naomi",
+      "description": "Tallarín, chanfainita, ceviche, chicharrón, huancaína y arroz con pollo.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_comb_super_nelida": {
+      "id": "prod_comb_super_nelida",
+      "categoryId": "cat_combinados",
+      "name": "Combinado Súper Nélida (Mega Especial)",
+      "description": "Tallarín, chanfainita, ceviche, chicharrón, huancaína, arroz con pollo, causa, y arroz con mariscos.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_tallarines_rojos": {
+      "id": "prod_tallarines_rojos",
+      "categoryId": "cat_combinados",
+      "name": "Tallarines Rojos + Presa + Huancaína + Ceviche",
+      "description": "Tallarines caseros con presa tierna, huancaína y porción de ceviche.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_arroz_pollo": {
+      "id": "prod_arroz_pollo",
+      "categoryId": "cat_combinados",
+      "name": "Arroz con Pollo + Presa + Huancaína + Ceviche",
+      "description": "Arroz con pollo al culantro con papa a la huancaína y ceviche fresco.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_causa_agradada": {
+      "id": "prod_causa_agradada",
+      "categoryId": "cat_combinados",
+      "name": "Causa Agradada Marina",
+      "description": "Causa de papa amarilla rellena y coronada con ceviche o mariscos.",
+      "basePrice": 15,
+      "spiceAllowed": true,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_arroz_mariscos": {
+      "id": "prod_arroz_mariscos",
+      "categoryId": "cat_arroces",
+      "name": "Arroz con Mariscos",
+      "description": "Porción entera de arroz criollo meloso con abundantes mariscos.",
+      "basePrice": 15,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Sarza criolla"
+      ],
+      "active": true
+    },
+    "prod_chaufa_mariscos": {
+      "id": "prod_chaufa_mariscos",
+      "categoryId": "cat_arroces",
+      "name": "Chaufa de Mariscos",
+      "description": "Chaufa salteado al wok con mariscos, cebolla china y sillao.",
+      "basePrice": 15,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_jalea_pescado": {
+      "id": "prod_jalea_pescado",
+      "categoryId": "cat_jaleas",
+      "name": "Jalea de Pescado",
+      "description": "Trozos de pescado fritos al punto crocante con yucas y sarza criolla.",
+      "basePrice": 20,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Yuca frita",
+        "Sarza criolla",
+        "Tártara"
+      ],
+      "active": true
+    },
+    "prod_jalea_mixta": {
+      "id": "prod_jalea_mixta",
+      "categoryId": "cat_jaleas",
+      "name": "Jalea Mixta Marina",
+      "description": "Pescado, calamar, pota y mariscos crocantes con yucas doradas.",
+      "basePrice": 20,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Yuca dorada",
+        "Sarza criolla",
+        "Tártara"
+      ],
+      "active": true
+    },
+    "prod_sudado_cabrilla": {
+      "id": "prod_sudado_cabrilla",
+      "categoryId": "cat_calientes",
+      "name": "Sudado de Cabrilla",
+      "description": "Cabrilla entera cocida a fuego lento con tomate, cebolla, chicha y yucas.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Arroz blanco",
+        "Yuca sancochada"
+      ],
+      "active": true
+    },
+    "prod_sudado_tramboyo": {
+      "id": "prod_sudado_tramboyo",
+      "categoryId": "cat_calientes",
+      "name": "Sudado de Tramboyo",
+      "description": "Tramboyo de peña sudado en caldo concentrado cevichero.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Arroz blanco",
+        "Yuca"
+      ],
+      "active": true
+    },
+    "prod_sudado_pintadilla": {
+      "id": "prod_sudado_pintadilla",
+      "categoryId": "cat_calientes",
+      "name": "Sudado de Pintadilla",
+      "description": "Pescado pintadilla con su chicha de jora, ají amarillo y culantro.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Arroz blanco",
+        "Yuca"
+      ],
+      "active": true
+    },
+    "prod_parihuela_mixta": {
+      "id": "prod_parihuela_mixta",
+      "categoryId": "cat_calientes",
+      "name": "Parihuela Mixta La Barra",
+      "description": "Parihuela potente y reponedora con conchas, cangrejo, calamar y pescado.",
+      "basePrice": 30,
+      "spiceAllowed": true,
+      "sidesAllowed": [
+        "Canchita"
+      ],
+      "active": true
+    },
+    "prod_chilcano": {
+      "id": "prod_chilcano",
+      "categoryId": "cat_calientes",
+      "name": "Chilcano Caliente",
+      "description": "Caldo de pescado concentrado con limón, cebollita y canchita.",
+      "basePrice": 8,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Canchita",
+        "Limón"
+      ],
+      "active": true
+    },
+    "prod_chilcano_especial": {
+      "id": "prod_chilcano_especial",
+      "categoryId": "cat_calientes",
+      "name": "Chilcano Especial con Mariscos",
+      "description": "Caldo chilcano con trozos de pescado y mixtura de mariscos.",
+      "basePrice": 10,
+      "spiceAllowed": false,
+      "sidesAllowed": [
+        "Canchita",
+        "Limón"
+      ],
+      "active": true
+    },
+    "prod_refresco_vaso": {
+      "id": "prod_refresco_vaso",
+      "categoryId": "cat_bebidas",
+      "name": "Refresco Natural (Vaso)",
+      "description": "Chicha morada casera o refresco de maracuyá helado.",
+      "basePrice": 2,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_refresco_medio_litro": {
+      "id": "prod_refresco_medio_litro",
+      "categoryId": "cat_bebidas",
+      "name": "Refresco Natural (Medio Litro)",
+      "description": "Medio litro de chicha morada o maracuyá natural.",
+      "basePrice": 4,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_refresco_litro": {
+      "id": "prod_refresco_litro",
+      "categoryId": "cat_bebidas",
+      "name": "Refresco Natural (Jarra 1 Litro)",
+      "description": "1 Litro de refresco natural de fruta fresca helado.",
+      "basePrice": 8,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_gaseosa_mediana": {
+      "id": "prod_gaseosa_mediana",
+      "categoryId": "cat_bebidas",
+      "name": "Gaseosa Mediana",
+      "description": "Inca Kola o Coca Cola personal.",
+      "basePrice": 3,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_gaseosa_gordita": {
+      "id": "prod_gaseosa_gordita",
+      "categoryId": "cat_bebidas",
+      "name": "Gaseosa Gordita",
+      "description": "Inca Kola o Coca Cola presentación Gordita bien helada.",
+      "basePrice": 5,
+      "sidesAllowed": [],
+      "spiceAllowed": false,
+      "active": true
+    },
+    "prod_gaseosa_1l": {
+      "id": "prod_gaseosa_1l",
+      "categoryId": "cat_bebidas",
+      "name": "Gaseosa 1 Litro",
+      "description": "Inca Kola o Coca Cola retornable 1L.",
+      "basePrice": 8,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_cerveza_pilsen": {
+      "id": "prod_cerveza_pilsen",
+      "categoryId": "cat_bebidas",
+      "name": "Cerveza Pilsen Callao",
+      "description": "Cerveza rubia heladísima para acompañar el ceviche.",
+      "basePrice": 10,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    },
+    "prod_cerveza_cusquena": {
+      "id": "prod_cerveza_cusquena",
+      "categoryId": "cat_bebidas",
+      "name": "Cerveza Cusqueña (Trigo o Negra)",
+      "description": "Cusqueña Trigo o Negra helada.",
+      "basePrice": 12,
+      "spiceAllowed": false,
+      "sidesAllowed": [],
+      "active": true
+    }
+  },
+  "branch_configs": {
+    "branch_principal_prod_cev_pescado": {
+      "id": "branch_principal_prod_cev_pescado",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.256Z"
+    },
+    "branch_principal_prod_cev_mixto": {
+      "id": "branch_principal_prod_cev_mixto",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_mixto",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.257Z"
+    },
+    "branch_principal_prod_cev_pota": {
+      "id": "branch_principal_prod_cev_pota",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_pota",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.257Z"
+    },
+    "branch_principal_prod_cev_pulpo": {
+      "id": "branch_principal_prod_cev_pulpo",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_pulpo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.258Z"
+    },
+    "branch_principal_prod_cev_mixtura": {
+      "id": "branch_principal_prod_cev_mixtura",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_mixtura",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.258Z"
+    },
+    "branch_principal_prod_cev_conchas_negras": {
+      "id": "branch_principal_prod_cev_conchas_negras",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_conchas_negras",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.259Z"
+    },
+    "branch_principal_prod_cev_conchas_negras_mixtas": {
+      "id": "branch_principal_prod_cev_conchas_negras_mixtas",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_conchas_negras_mixtas",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.259Z"
+    },
+    "branch_principal_prod_cev_almejas": {
+      "id": "branch_principal_prod_cev_almejas",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_almejas",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.260Z"
+    },
+    "branch_principal_prod_cev_langostino": {
+      "id": "branch_principal_prod_cev_langostino",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_langostino",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.261Z"
+    },
+    "branch_principal_prod_cev_conchas_abanico": {
+      "id": "branch_principal_prod_cev_conchas_abanico",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_conchas_abanico",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.261Z"
+    },
+    "branch_principal_prod_cev_huancaina": {
+      "id": "branch_principal_prod_cev_huancaina",
+      "branchId": "branch_principal",
+      "productId": "prod_cev_huancaina",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.262Z"
+    },
+    "branch_principal_prod_leche_pescado": {
+      "id": "branch_principal_prod_leche_pescado",
+      "branchId": "branch_principal",
+      "productId": "prod_leche_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.262Z"
+    },
+    "branch_principal_prod_leche_mixta": {
+      "id": "branch_principal_prod_leche_mixta",
+      "branchId": "branch_principal",
+      "productId": "prod_leche_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.263Z"
+    },
+    "branch_principal_prod_leche_pota": {
+      "id": "branch_principal_prod_leche_pota",
+      "branchId": "branch_principal",
+      "productId": "prod_leche_pota",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.263Z"
+    },
+    "branch_principal_prod_leche_pantera": {
+      "id": "branch_principal_prod_leche_pantera",
+      "branchId": "branch_principal",
+      "productId": "prod_leche_pantera",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.264Z"
+    },
+    "branch_principal_prod_leche_pantera_mixta": {
+      "id": "branch_principal_prod_leche_pantera_mixta",
+      "branchId": "branch_principal",
+      "productId": "prod_leche_pantera_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.264Z"
+    },
+    "branch_principal_prod_duo_mariscos_cev": {
+      "id": "branch_principal_prod_duo_mariscos_cev",
+      "branchId": "branch_principal",
+      "productId": "prod_duo_mariscos_cev",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.265Z"
+    },
+    "branch_principal_prod_duo_mariscos_chich": {
+      "id": "branch_principal_prod_duo_mariscos_chich",
+      "branchId": "branch_principal",
+      "productId": "prod_duo_mariscos_chich",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.266Z"
+    },
+    "branch_principal_prod_duo_chaufa_cev": {
+      "id": "branch_principal_prod_duo_chaufa_cev",
+      "branchId": "branch_principal",
+      "productId": "prod_duo_chaufa_cev",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.266Z"
+    },
+    "branch_principal_prod_duo_chaufa_chich": {
+      "id": "branch_principal_prod_duo_chaufa_chich",
+      "branchId": "branch_principal",
+      "productId": "prod_duo_chaufa_chich",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.267Z"
+    },
+    "branch_principal_prod_trio_marino": {
+      "id": "branch_principal_prod_trio_marino",
+      "branchId": "branch_principal",
+      "productId": "prod_trio_marino",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.267Z"
+    },
+    "branch_principal_prod_trio_oriental": {
+      "id": "branch_principal_prod_trio_oriental",
+      "branchId": "branch_principal",
+      "productId": "prod_trio_oriental",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.267Z"
+    },
+    "branch_principal_prod_trio_criollo": {
+      "id": "branch_principal_prod_trio_criollo",
+      "branchId": "branch_principal",
+      "productId": "prod_trio_criollo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.268Z"
+    },
+    "branch_principal_prod_comb_clasico": {
+      "id": "branch_principal_prod_comb_clasico",
+      "branchId": "branch_principal",
+      "productId": "prod_comb_clasico",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.268Z"
+    },
+    "branch_principal_prod_comb_naomi": {
+      "id": "branch_principal_prod_comb_naomi",
+      "branchId": "branch_principal",
+      "productId": "prod_comb_naomi",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.269Z"
+    },
+    "branch_principal_prod_comb_super_nelida": {
+      "id": "branch_principal_prod_comb_super_nelida",
+      "branchId": "branch_principal",
+      "productId": "prod_comb_super_nelida",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.270Z"
+    },
+    "branch_principal_prod_tallarines_rojos": {
+      "id": "branch_principal_prod_tallarines_rojos",
+      "branchId": "branch_principal",
+      "productId": "prod_tallarines_rojos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.270Z"
+    },
+    "branch_principal_prod_arroz_pollo": {
+      "id": "branch_principal_prod_arroz_pollo",
+      "branchId": "branch_principal",
+      "productId": "prod_arroz_pollo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.270Z"
+    },
+    "branch_principal_prod_causa_agradada": {
+      "id": "branch_principal_prod_causa_agradada",
+      "branchId": "branch_principal",
+      "productId": "prod_causa_agradada",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.271Z"
+    },
+    "branch_principal_prod_arroz_mariscos": {
+      "id": "branch_principal_prod_arroz_mariscos",
+      "branchId": "branch_principal",
+      "productId": "prod_arroz_mariscos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.272Z"
+    },
+    "branch_principal_prod_chaufa_mariscos": {
+      "id": "branch_principal_prod_chaufa_mariscos",
+      "branchId": "branch_principal",
+      "productId": "prod_chaufa_mariscos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.272Z"
+    },
+    "branch_principal_prod_jalea_pescado": {
+      "id": "branch_principal_prod_jalea_pescado",
+      "branchId": "branch_principal",
+      "productId": "prod_jalea_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.272Z"
+    },
+    "branch_principal_prod_jalea_mixta": {
+      "id": "branch_principal_prod_jalea_mixta",
+      "branchId": "branch_principal",
+      "productId": "prod_jalea_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.273Z"
+    },
+    "branch_principal_prod_sudado_cabrilla": {
+      "id": "branch_principal_prod_sudado_cabrilla",
+      "branchId": "branch_principal",
+      "productId": "prod_sudado_cabrilla",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.273Z"
+    },
+    "branch_principal_prod_sudado_tramboyo": {
+      "id": "branch_principal_prod_sudado_tramboyo",
+      "branchId": "branch_principal",
+      "productId": "prod_sudado_tramboyo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.274Z"
+    },
+    "branch_principal_prod_sudado_pintadilla": {
+      "id": "branch_principal_prod_sudado_pintadilla",
+      "branchId": "branch_principal",
+      "productId": "prod_sudado_pintadilla",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.274Z"
+    },
+    "branch_principal_prod_parihuela_mixta": {
+      "id": "branch_principal_prod_parihuela_mixta",
+      "branchId": "branch_principal",
+      "productId": "prod_parihuela_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.274Z"
+    },
+    "branch_principal_prod_chilcano": {
+      "id": "branch_principal_prod_chilcano",
+      "branchId": "branch_principal",
+      "productId": "prod_chilcano",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.275Z"
+    },
+    "branch_principal_prod_chilcano_especial": {
+      "id": "branch_principal_prod_chilcano_especial",
+      "branchId": "branch_principal",
+      "productId": "prod_chilcano_especial",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.275Z"
+    },
+    "branch_principal_prod_refresco_vaso": {
+      "id": "branch_principal_prod_refresco_vaso",
+      "branchId": "branch_principal",
+      "productId": "prod_refresco_vaso",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.276Z"
+    },
+    "branch_principal_prod_refresco_medio_litro": {
+      "id": "branch_principal_prod_refresco_medio_litro",
+      "branchId": "branch_principal",
+      "productId": "prod_refresco_medio_litro",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.276Z"
+    },
+    "branch_principal_prod_refresco_litro": {
+      "id": "branch_principal_prod_refresco_litro",
+      "branchId": "branch_principal",
+      "productId": "prod_refresco_litro",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.277Z"
+    },
+    "branch_principal_prod_gaseosa_mediana": {
+      "id": "branch_principal_prod_gaseosa_mediana",
+      "branchId": "branch_principal",
+      "productId": "prod_gaseosa_mediana",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.277Z"
+    },
+    "branch_principal_prod_gaseosa_gordita": {
+      "id": "branch_principal_prod_gaseosa_gordita",
+      "branchId": "branch_principal",
+      "productId": "prod_gaseosa_gordita",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.278Z"
+    },
+    "branch_principal_prod_gaseosa_1l": {
+      "id": "branch_principal_prod_gaseosa_1l",
+      "branchId": "branch_principal",
+      "productId": "prod_gaseosa_1l",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.278Z"
+    },
+    "branch_principal_prod_cerveza_pilsen": {
+      "id": "branch_principal_prod_cerveza_pilsen",
+      "branchId": "branch_principal",
+      "productId": "prod_cerveza_pilsen",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.279Z"
+    },
+    "branch_principal_prod_cerveza_cusquena": {
+      "id": "branch_principal_prod_cerveza_cusquena",
+      "branchId": "branch_principal",
+      "productId": "prod_cerveza_cusquena",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.279Z"
+    },
+    "branch_sur_prod_cev_pescado": {
+      "id": "branch_sur_prod_cev_pescado",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.280Z"
+    },
+    "branch_sur_prod_cev_mixto": {
+      "id": "branch_sur_prod_cev_mixto",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_mixto",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.280Z"
+    },
+    "branch_sur_prod_cev_pota": {
+      "id": "branch_sur_prod_cev_pota",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_pota",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.281Z"
+    },
+    "branch_sur_prod_cev_pulpo": {
+      "id": "branch_sur_prod_cev_pulpo",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_pulpo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.281Z"
+    },
+    "branch_sur_prod_cev_mixtura": {
+      "id": "branch_sur_prod_cev_mixtura",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_mixtura",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.282Z"
+    },
+    "branch_sur_prod_cev_conchas_negras": {
+      "id": "branch_sur_prod_cev_conchas_negras",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_conchas_negras",
+      "isAvailable": false,
+      "outOfStockReason": "Pesca fresca agotada hoy en Sede Sur",
+      "updatedAt": "2026-09-13T00:16:56.282Z"
+    },
+    "branch_sur_prod_cev_conchas_negras_mixtas": {
+      "id": "branch_sur_prod_cev_conchas_negras_mixtas",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_conchas_negras_mixtas",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.283Z"
+    },
+    "branch_sur_prod_cev_almejas": {
+      "id": "branch_sur_prod_cev_almejas",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_almejas",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.283Z"
+    },
+    "branch_sur_prod_cev_langostino": {
+      "id": "branch_sur_prod_cev_langostino",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_langostino",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.283Z"
+    },
+    "branch_sur_prod_cev_conchas_abanico": {
+      "id": "branch_sur_prod_cev_conchas_abanico",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_conchas_abanico",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.284Z"
+    },
+    "branch_sur_prod_cev_huancaina": {
+      "id": "branch_sur_prod_cev_huancaina",
+      "branchId": "branch_sur",
+      "productId": "prod_cev_huancaina",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.284Z"
+    },
+    "branch_sur_prod_leche_pescado": {
+      "id": "branch_sur_prod_leche_pescado",
+      "branchId": "branch_sur",
+      "productId": "prod_leche_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.285Z"
+    },
+    "branch_sur_prod_leche_mixta": {
+      "id": "branch_sur_prod_leche_mixta",
+      "branchId": "branch_sur",
+      "productId": "prod_leche_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.285Z"
+    },
+    "branch_sur_prod_leche_pota": {
+      "id": "branch_sur_prod_leche_pota",
+      "branchId": "branch_sur",
+      "productId": "prod_leche_pota",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.285Z"
+    },
+    "branch_sur_prod_leche_pantera": {
+      "id": "branch_sur_prod_leche_pantera",
+      "branchId": "branch_sur",
+      "productId": "prod_leche_pantera",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.286Z"
+    },
+    "branch_sur_prod_leche_pantera_mixta": {
+      "id": "branch_sur_prod_leche_pantera_mixta",
+      "branchId": "branch_sur",
+      "productId": "prod_leche_pantera_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.286Z"
+    },
+    "branch_sur_prod_duo_mariscos_cev": {
+      "id": "branch_sur_prod_duo_mariscos_cev",
+      "branchId": "branch_sur",
+      "productId": "prod_duo_mariscos_cev",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.287Z"
+    },
+    "branch_sur_prod_duo_mariscos_chich": {
+      "id": "branch_sur_prod_duo_mariscos_chich",
+      "branchId": "branch_sur",
+      "productId": "prod_duo_mariscos_chich",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.287Z"
+    },
+    "branch_sur_prod_duo_chaufa_cev": {
+      "id": "branch_sur_prod_duo_chaufa_cev",
+      "branchId": "branch_sur",
+      "productId": "prod_duo_chaufa_cev",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.288Z"
+    },
+    "branch_sur_prod_duo_chaufa_chich": {
+      "id": "branch_sur_prod_duo_chaufa_chich",
+      "branchId": "branch_sur",
+      "productId": "prod_duo_chaufa_chich",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.288Z"
+    },
+    "branch_sur_prod_trio_marino": {
+      "id": "branch_sur_prod_trio_marino",
+      "branchId": "branch_sur",
+      "productId": "prod_trio_marino",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.288Z"
+    },
+    "branch_sur_prod_trio_oriental": {
+      "id": "branch_sur_prod_trio_oriental",
+      "branchId": "branch_sur",
+      "productId": "prod_trio_oriental",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.289Z"
+    },
+    "branch_sur_prod_trio_criollo": {
+      "id": "branch_sur_prod_trio_criollo",
+      "branchId": "branch_sur",
+      "productId": "prod_trio_criollo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.289Z"
+    },
+    "branch_sur_prod_comb_clasico": {
+      "id": "branch_sur_prod_comb_clasico",
+      "branchId": "branch_sur",
+      "productId": "prod_comb_clasico",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.290Z"
+    },
+    "branch_sur_prod_comb_naomi": {
+      "id": "branch_sur_prod_comb_naomi",
+      "branchId": "branch_sur",
+      "productId": "prod_comb_naomi",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.290Z"
+    },
+    "branch_sur_prod_comb_super_nelida": {
+      "id": "branch_sur_prod_comb_super_nelida",
+      "branchId": "branch_sur",
+      "productId": "prod_comb_super_nelida",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.291Z"
+    },
+    "branch_sur_prod_tallarines_rojos": {
+      "id": "branch_sur_prod_tallarines_rojos",
+      "branchId": "branch_sur",
+      "productId": "prod_tallarines_rojos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.291Z"
+    },
+    "branch_sur_prod_arroz_pollo": {
+      "id": "branch_sur_prod_arroz_pollo",
+      "branchId": "branch_sur",
+      "productId": "prod_arroz_pollo",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.291Z"
+    },
+    "branch_sur_prod_causa_agradada": {
+      "id": "branch_sur_prod_causa_agradada",
+      "branchId": "branch_sur",
+      "productId": "prod_causa_agradada",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.292Z"
+    },
+    "branch_sur_prod_arroz_mariscos": {
+      "id": "branch_sur_prod_arroz_mariscos",
+      "branchId": "branch_sur",
+      "productId": "prod_arroz_mariscos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.292Z"
+    },
+    "branch_sur_prod_chaufa_mariscos": {
+      "id": "branch_sur_prod_chaufa_mariscos",
+      "branchId": "branch_sur",
+      "productId": "prod_chaufa_mariscos",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.292Z"
+    },
+    "branch_sur_prod_jalea_pescado": {
+      "id": "branch_sur_prod_jalea_pescado",
+      "branchId": "branch_sur",
+      "productId": "prod_jalea_pescado",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.293Z"
+    },
+    "branch_sur_prod_jalea_mixta": {
+      "id": "branch_sur_prod_jalea_mixta",
+      "branchId": "branch_sur",
+      "productId": "prod_jalea_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.293Z"
+    },
+    "branch_sur_prod_sudado_cabrilla": {
+      "id": "branch_sur_prod_sudado_cabrilla",
+      "branchId": "branch_sur",
+      "productId": "prod_sudado_cabrilla",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.294Z"
+    },
+    "branch_sur_prod_sudado_tramboyo": {
+      "id": "branch_sur_prod_sudado_tramboyo",
+      "branchId": "branch_sur",
+      "productId": "prod_sudado_tramboyo",
+      "isAvailable": false,
+      "outOfStockReason": "Pesca fresca agotada hoy en Sede Sur",
+      "updatedAt": "2026-09-13T00:16:56.294Z"
+    },
+    "branch_sur_prod_sudado_pintadilla": {
+      "id": "branch_sur_prod_sudado_pintadilla",
+      "branchId": "branch_sur",
+      "productId": "prod_sudado_pintadilla",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.294Z"
+    },
+    "branch_sur_prod_parihuela_mixta": {
+      "id": "branch_sur_prod_parihuela_mixta",
+      "branchId": "branch_sur",
+      "productId": "prod_parihuela_mixta",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.295Z"
+    },
+    "branch_sur_prod_chilcano": {
+      "id": "branch_sur_prod_chilcano",
+      "branchId": "branch_sur",
+      "productId": "prod_chilcano",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.295Z"
+    },
+    "branch_sur_prod_chilcano_especial": {
+      "id": "branch_sur_prod_chilcano_especial",
+      "branchId": "branch_sur",
+      "productId": "prod_chilcano_especial",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.296Z"
+    },
+    "branch_sur_prod_refresco_vaso": {
+      "id": "branch_sur_prod_refresco_vaso",
+      "branchId": "branch_sur",
+      "productId": "prod_refresco_vaso",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.296Z"
+    },
+    "branch_sur_prod_refresco_medio_litro": {
+      "id": "branch_sur_prod_refresco_medio_litro",
+      "branchId": "branch_sur",
+      "productId": "prod_refresco_medio_litro",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.296Z"
+    },
+    "branch_sur_prod_refresco_litro": {
+      "id": "branch_sur_prod_refresco_litro",
+      "branchId": "branch_sur",
+      "productId": "prod_refresco_litro",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.297Z"
+    },
+    "branch_sur_prod_gaseosa_mediana": {
+      "id": "branch_sur_prod_gaseosa_mediana",
+      "branchId": "branch_sur",
+      "productId": "prod_gaseosa_mediana",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.297Z"
+    },
+    "branch_sur_prod_gaseosa_gordita": {
+      "id": "branch_sur_prod_gaseosa_gordita",
+      "branchId": "branch_sur",
+      "productId": "prod_gaseosa_gordita",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.298Z"
+    },
+    "branch_sur_prod_gaseosa_1l": {
+      "id": "branch_sur_prod_gaseosa_1l",
+      "branchId": "branch_sur",
+      "productId": "prod_gaseosa_1l",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.298Z"
+    },
+    "branch_sur_prod_cerveza_pilsen": {
+      "id": "branch_sur_prod_cerveza_pilsen",
+      "branchId": "branch_sur",
+      "productId": "prod_cerveza_pilsen",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.298Z"
+    },
+    "branch_sur_prod_cerveza_cusquena": {
+      "id": "branch_sur_prod_cerveza_cusquena",
+      "branchId": "branch_sur",
+      "productId": "prod_cerveza_cusquena",
+      "isAvailable": true,
+      "updatedAt": "2026-09-13T00:16:56.299Z"
+    }
+  },
+  "orders": {
+    "ord_101": {
+      "id": "ord_101",
+      "branchId": "branch_principal",
+      "tableNumber": 2,
+      "waiterId": "user_mozo_1",
+      "waiterName": "Carlos (Mozo)",
+      "items": [
+        {
+          "id": "item_1",
+          "productId": "prod_trio_marino",
+          "productName": "Trío Marino",
+          "quantity": 1,
+          "unitPrice": 20,
+          "subtotal": 20,
+          "spiceLevel": "BRAVO",
+          "selectedSides": [
+            "Canchita",
+            "Sarza criolla"
+          ],
+          "notes": "Con extra canchita",
+          "status": "DELIVERED"
+        },
+        {
+          "id": "item_2",
+          "productId": "prod_refresco_litro",
+          "productName": "Refresco Natural (Jarra 1 Litro)",
+          "quantity": 1,
+          "unitPrice": 8,
+          "subtotal": 8,
+          "status": "DELIVERED"
+        }
+      ],
+      "totalAmount": 28,
+      "status": "COMPLETED",
+      "notes": "Mesa familiar",
+      "createdAt": "2026-09-13T00:08:56.299Z",
+      "updatedAt": "2026-09-13T00:45:47.017Z",
+      "paymentMethod": "EFECTIVO",
+      "paidAt": "2026-09-13T00:20:19.692Z"
+    },
+    "ord_102": {
+      "id": "ord_102",
+      "branchId": "branch_principal",
+      "tableNumber": 5,
+      "waiterId": "user_mozo_1",
+      "waiterName": "Carlos (Mozo)",
+      "items": [
+        {
+          "id": "item_3",
+          "productId": "prod_comb_super_nelida",
+          "productName": "Combinado Súper Nélida (Mega Especial)",
+          "quantity": 1,
+          "unitPrice": 30,
+          "subtotal": 30,
+          "spiceLevel": "MEDIO",
+          "selectedSides": [
+            "Canchita"
+          ],
+          "notes": "Bien servido",
+          "status": "PENDING"
+        },
+        {
+          "id": "item_4",
+          "productId": "prod_cerveza_pilsen",
+          "productName": "Cerveza Pilsen Callao",
+          "quantity": 2,
+          "unitPrice": 10,
+          "subtotal": 20,
+          "status": "READY"
+        }
+      ],
+      "totalAmount": 50,
+      "status": "PENDING",
+      "createdAt": "2026-09-13T00:13:56.299Z",
+      "updatedAt": "2026-09-13T00:16:56.299Z"
+    },
+    "7d5936ba-b036-4be2-8c14-e5cecc2640a9": {
+      "id": "7d5936ba-b036-4be2-8c14-e5cecc2640a9",
+      "branchId": "branch_principal",
+      "tableNumber": 1,
+      "waiterId": "user_admin_multisede",
+      "waiterName": "Mario Rivas (Admin Multisede Principal y Sur)",
+      "items": [
+        {
+          "id": "1dc98780-e4fa-4b9d-afaf-525822d894e4",
+          "productId": "prod_cev_pescado",
+          "productName": "Ceviche de Pescado",
+          "quantity": 1,
+          "unitPrice": 20,
+          "subtotal": 20,
+          "spiceLevel": "MEDIO",
+          "selectedSides": [],
+          "notes": "",
+          "status": "DELIVERED"
+        },
+        {
+          "id": "d9dc9bda-bd25-402f-bc78-d9e69435c898",
+          "productId": "prod_cev_mixto",
+          "productName": "Ceviche Mixto",
+          "quantity": 1,
+          "unitPrice": 20,
+          "subtotal": 20,
+          "spiceLevel": "MEDIO",
+          "selectedSides": [],
+          "notes": "",
+          "status": "PENDING"
+        }
+      ],
+      "totalAmount": 40,
+      "status": "COMPLETED",
+      "notes": "",
+      "createdAt": "2026-09-13T00:00:26.050Z",
+      "updatedAt": "2026-09-13T00:04:19.043Z",
+      "paymentMethod": "YAPE",
+      "paidAt": "2026-09-13T00:03:42.012Z"
+    }
+  }
+}
