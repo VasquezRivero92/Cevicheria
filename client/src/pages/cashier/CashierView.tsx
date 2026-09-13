@@ -114,7 +114,7 @@ export const CashierView: React.FC = () => {
   const changeDue = selectedOrder ? Math.max(0, cashAmountNumber - selectedOrder.totalAmount) : 0;
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#fef8f1] text-[#1d1b17] p-4 sm:p-6 pb-24 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-[calc(100vh-4rem)] w-full max-w-full overflow-x-hidden bg-[#fef8f1] text-[#1d1b17] p-3 sm:p-6 pb-24 font-['Plus_Jakarta_Sans',sans-serif]">
       <div className="max-w-6xl mx-auto">
         {/* Cabecera Estilo Stitch */}
         <div className="bg-[#133854] text-white rounded-3xl p-5 sm:p-6 shadow-xl mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-[#274966]">

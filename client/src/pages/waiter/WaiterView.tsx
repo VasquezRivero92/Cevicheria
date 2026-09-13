@@ -668,7 +668,7 @@ export const WaiterView: React.FC = () => {
     const tableNumbers = Array.from({ length: tableTotal }, (_, i) => i + 1);
 
     return (
-      <div className="min-h-screen bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif] pb-28">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif] pb-28">
         {/* Cabecera Estilo Stitch */}
         <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-3 shadow-sm">
           <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
@@ -890,7 +890,7 @@ export const WaiterView: React.FC = () => {
   // VISTA 2: MENÚ & COMANDERO MÓVIL ESTILO STITCH (MESA SELECCIONADA)
   // =========================================================================
   return (
-    <div className="min-h-screen bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif] pb-36">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif] pb-36">
       {/* TOP APP BAR FLOTANTE (ESTILO STITCH) */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-3 sm:px-4 py-2.5 shadow-sm">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">

@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   };
 
   return (
-    <header className="bg-[#fef8f1]/95 backdrop-blur-md border-b border-[#133854]/10 sticky top-0 z-40 shadow-sm font-['Plus_Jakarta_Sans',sans-serif]">
+    <header className="w-full max-w-full overflow-x-hidden bg-[#fef8f1]/95 backdrop-blur-md border-b border-[#133854]/10 sticky top-0 z-40 shadow-sm font-['Plus_Jakarta_Sans',sans-serif]">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-[68px]">
           {/* Logo y Nombre Stitch Style (Con protección contra saltos de línea y cortes de texto) */}

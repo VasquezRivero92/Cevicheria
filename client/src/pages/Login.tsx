@@ -56,7 +56,7 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center p-4 sm:p-6 text-white overflow-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden flex flex-col justify-center items-center p-3 sm:p-6 text-white font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Fondo con el Patrón Marino Oficial en Alta Definición */}
       <div 
         className="absolute inset-0 bg-repeat bg-center"

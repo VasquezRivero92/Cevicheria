@@ -116,7 +116,7 @@ export const KitchenDisplay: React.FC = () => {
   });
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#0a1d37] text-slate-100 p-4 sm:p-6 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-[calc(100vh-4rem)] w-full max-w-full overflow-x-hidden bg-[#0a1d37] text-slate-100 p-3 sm:p-6 font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Cabecera de Cocina / KDS Estilo Stitch */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#133854] mb-6">
         <div className="flex items-center gap-3">
