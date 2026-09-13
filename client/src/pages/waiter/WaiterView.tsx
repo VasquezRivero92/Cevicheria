@@ -1110,33 +1110,35 @@ export const WaiterView: React.FC = () => {
           )}
         </div>
 
-        {/* Pestañas de Categorías - Visibles y adaptables sin cortes */}
-        <div className="flex flex-wrap items-center gap-2 mb-5">
-          <button
-            onClick={() => setSelectedCategoryId('all')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all duration-150 font-['Epilogue',sans-serif] flex items-center gap-1.5 shadow-sm ${
-              selectedCategoryId === 'all'
-                ? 'bg-[#133854] text-white shadow-sky-950/20 ring-2 ring-[#133854]/20'
-                : 'bg-white text-slate-700 border border-slate-200 hover:bg-[#fef8f1] hover:border-amber-300'
-            }`}
-          >
-            <span>🍽️</span>
-            <span>Toda la Carta</span>
-          </button>
-          {categories.map((c) => (
+        {/* Selector de Categorías Ergonómico para Móvil (Botones grandes tipo Chips táctiles) */}
+        <div className="mb-5 overflow-x-auto no-scrollbar py-1">
+          <div className="flex items-center gap-2.5 min-w-max pb-1">
             <button
-              key={c.id}
-              onClick={() => setSelectedCategoryId(c.id)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all duration-150 flex items-center gap-1.5 font-['Epilogue',sans-serif] shadow-sm ${
-                selectedCategoryId === c.id
-                  ? 'bg-[#133854] text-white shadow-sky-950/20 ring-2 ring-[#133854]/20'
+              onClick={() => setSelectedCategoryId('all')}
+              className={`min-h-[46px] px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-150 font-['Epilogue',sans-serif] flex items-center gap-2 shadow-sm shrink-0 active:scale-95 ${
+                selectedCategoryId === 'all'
+                  ? 'bg-[#133854] text-white ring-2 ring-[#fc772a] shadow-md scale-102'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-[#fef8f1] hover:border-amber-300'
               }`}
             >
-              <span className="text-sm">{c.icon}</span>
-              <span>{c.name}</span>
+              <span className="text-base">🍽️</span>
+              <span>Toda la Carta</span>
             </button>
-          ))}
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setSelectedCategoryId(c.id)}
+                className={`min-h-[46px] px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-150 flex items-center gap-2 font-['Epilogue',sans-serif] shadow-sm shrink-0 active:scale-95 ${
+                  selectedCategoryId === c.id
+                    ? 'bg-[#133854] text-white ring-2 ring-[#fc772a] shadow-md scale-102'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-[#fef8f1] hover:border-amber-300'
+                }`}
+              >
+                <span className="text-lg">{c.icon}</span>
+                <span>{c.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Listado de Platos Cevecheros Estilo Tarjetas Stitch */}

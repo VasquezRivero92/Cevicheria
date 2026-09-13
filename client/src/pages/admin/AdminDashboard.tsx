@@ -646,30 +646,32 @@ export const AdminDashboard: React.FC = () => {
               />
             </div>
 
-            <div className="flex flex-wrap gap-1.5 pb-1">
-              <button
-                onClick={() => setSelectedCategoryFilter('all')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  selectedCategoryFilter === 'all'
-                    ? 'bg-slate-900 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                Todos
-              </button>
-              {categories.map((c) => (
+            <div className="overflow-x-auto no-scrollbar py-1 w-full sm:w-auto">
+              <div className="flex items-center gap-2 min-w-max pb-1">
                 <button
-                  key={c.id}
-                  onClick={() => setSelectedCategoryFilter(c.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    selectedCategoryFilter === c.id
-                      ? 'bg-[#133854] text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  onClick={() => setSelectedCategoryFilter('all')}
+                  className={`min-h-[44px] px-3.5 py-2 rounded-2xl text-xs font-bold transition-all shrink-0 active:scale-95 ${
+                    selectedCategoryFilter === 'all'
+                      ? 'bg-slate-900 text-white shadow-sm ring-2 ring-slate-400'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                   }`}
                 >
-                  {c.icon ? `${c.icon} ` : ''}{c.name}
+                  🍽️ Todos
                 </button>
-              ))}
+                {categories.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setSelectedCategoryFilter(c.id)}
+                    className={`min-h-[44px] px-3.5 py-2 rounded-2xl text-xs font-bold transition-all shrink-0 active:scale-95 ${
+                      selectedCategoryFilter === c.id
+                        ? 'bg-[#133854] text-white shadow-sm ring-2 ring-[#fc772a]'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                    }`}
+                  >
+                    {c.icon ? `${c.icon} ` : ''}{c.name}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
