@@ -8,30 +8,62 @@ import { KitchenDisplay } from './pages/kitchen/KitchenDisplay.js';
 import { CashierView } from './pages/cashier/CashierView.js';
 import { AdminDashboard } from './pages/admin/AdminDashboard.js';
 
+import { Role } from './types.js';
+
+// Verificación estricta de permisos por rol
+export const isAllowedView = (view: string, role?: Role): boolean => {
+  if (!role) return false;
+  switch (view) {
+    case 'admin':
+    case 'menu-matrix':
+      return role === 'admin_general' || role === 'admin_local';
+    case 'kitchen':
+      return role === 'admin_general' || role === 'admin_local' || role === 'cocina';
+    case 'cashier':
+      return role === 'admin_general' || role === 'admin_local' || role === 'cajero';
+    case 'waiter':
+      return role === 'admin_general' || role === 'admin_local' || role === 'mozo';
+    default:
+      return false;
+  }
+};
+
+export const getDefaultViewForRole = (role?: Role): string => {
+  switch (role) {
+    case 'admin_general':
+    case 'admin_local':
+      return 'admin';
+    case 'mozo':
+      return 'waiter';
+    case 'cocina':
+      return 'kitchen';
+    case 'cajero':
+      return 'cashier';
+    default:
+      return 'waiter';
+  }
+};
+
 const MainLayout: React.FC = () => {
   const { user, isLoading } = useAuth();
-  const [currentView, setCurrentView] = useState<string>('waiter');
+  const [currentView, setCurrentView] = useState<string>(() => getDefaultViewForRole(user?.role));
 
-  // Ajustar vista inicial según el rol del usuario al ingresar
+  // Ajustar vista inicial o forzar redirección si la vista actual no está permitida para su rol
   useEffect(() => {
     if (user) {
-      switch (user.role) {
-        case 'admin_general':
-        case 'admin_local':
-          setCurrentView('admin');
-          break;
-        case 'mozo':
-          setCurrentView('waiter');
-          break;
-        case 'cocina':
-          setCurrentView('kitchen');
-          break;
-        case 'cajero':
-          setCurrentView('cashier');
-          break;
+      if (!isAllowedView(currentView, user.role)) {
+        setCurrentView(getDefaultViewForRole(user.role));
       }
     }
-  }, [user?.id, user?.role]);
+  }, [user?.id, user?.role, currentView]);
+
+  const handleNavigate = (view: string) => {
+    if (user && isAllowedView(view, user.role)) {
+      setCurrentView(view);
+    } else if (user) {
+      console.warn(`[Seguridad] Acceso no autorizado a la vista '${view}' para el rol '${user.role}'`);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -53,14 +85,14 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#fef8f1] text-[#1d1b17] flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#ffdbcc] selection:text-[#351000]">
-      <Navbar currentView={currentView} onNavigate={setCurrentView} />
+      <Navbar currentView={currentView} onNavigate={handleNavigate} />
 
       <main className="flex-1">
-        {currentView === 'waiter' && <WaiterView />}
-        {currentView === 'kitchen' && <KitchenDisplay />}
-        {currentView === 'cashier' && <CashierView />}
-        {currentView === 'admin' && <AdminDashboard />}
-        {currentView === 'menu-matrix' && <AdminDashboard />}
+        {currentView === 'waiter' && isAllowedView('waiter', user.role) && <WaiterView />}
+        {currentView === 'kitchen' && isAllowedView('kitchen', user.role) && <KitchenDisplay />}
+        {currentView === 'cashier' && isAllowedView('cashier', user.role) && <CashierView />}
+        {currentView === 'admin' && isAllowedView('admin', user.role) && <AdminDashboard initialTab="overview" />}
+        {currentView === 'menu-matrix' && isAllowedView('menu-matrix', user.role) && <AdminDashboard initialTab="matrix" />}
       </main>
     </div>
   );

@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 export const KitchenDisplay: React.FC = () => {
-  const { currentBranch } = useAuth();
+  const { user, currentBranch } = useAuth();
   const { lastOrderEvent } = useSocket();
   const [orders, setOrders] = useState<Order[]>([]);
   const [filterType, setFilterType] = useState<'all' | 'pending' | 'preparing' | 'ready'>('all');
@@ -114,6 +114,22 @@ export const KitchenDisplay: React.FC = () => {
     if (filterType === 'ready') return o.status === 'READY';
     return true;
   });
+
+  const isAuthorized = user?.role === 'admin_general' || user?.role === 'admin_local' || user?.role === 'cocina';
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif]">
+        <div className="w-16 h-16 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mb-4 text-3xl font-bold shadow-inner">
+          👨‍🍳
+        </div>
+        <h2 className="text-xl font-['Epilogue',sans-serif] font-black text-[#00223a]">Acceso de Cocina</h2>
+        <p className="text-sm text-[#73777e] mt-2 max-w-md">
+          Esta pantalla está reservada para el personal de cocina, barra y administradores.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full max-w-full overflow-x-hidden bg-[#0a1d37] text-slate-100 p-3 sm:p-6 font-['Plus_Jakarta_Sans',sans-serif]">

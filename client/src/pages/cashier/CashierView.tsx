@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 export const CashierView: React.FC = () => {
-  const { currentBranch } = useAuth();
+  const { user, currentBranch } = useAuth();
   const { lastOrderEvent } = useSocket();
   const [activeOrders, setActiveOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
@@ -112,6 +112,22 @@ export const CashierView: React.FC = () => {
 
   const cashAmountNumber = parseFloat(cashGiven) || 0;
   const changeDue = selectedOrder ? Math.max(0, cashAmountNumber - selectedOrder.totalAmount) : 0;
+
+  const isAuthorized = user?.role === 'admin_general' || user?.role === 'admin_local' || user?.role === 'cajero';
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif]">
+        <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mb-4 text-3xl font-bold shadow-inner">
+          💵
+        </div>
+        <h2 className="text-xl font-['Epilogue',sans-serif] font-black text-[#00223a]">Acceso de Caja</h2>
+        <p className="text-sm text-[#73777e] mt-2 max-w-md">
+          Esta pantalla está reservada para el personal de caja y administradores.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full max-w-full overflow-x-hidden bg-[#fef8f1] text-[#1d1b17] p-3 sm:p-6 pb-24 font-['Plus_Jakarta_Sans',sans-serif]">

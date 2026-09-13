@@ -21,11 +21,16 @@ import {
   Trash2
 } from 'lucide-react';
 
-export const AdminDashboard: React.FC = () => {
+interface AdminDashboardProps {
+  initialTab?: 'matrix' | 'staff' | 'overview' | 'orders' | 'firebase';
+}
+
+export const AdminDashboard: React.FC<AdminDashboardProps> = ({ initialTab = 'matrix' }) => {
   const { user, branches, userBranches, currentBranch } = useAuth();
   const { lastOrderEvent } = useSocket();
 
   const isGeneralAdmin = user?.role === 'admin_general';
+  const isAdmin = isGeneralAdmin || user?.role === 'admin_local';
 
   // Sede inicial seleccionada: sede actual si está permitida o la primera permitida
   const initialBranchId = currentBranch?.id && userBranches.some(b => b.id === currentBranch.id)
@@ -34,7 +39,14 @@ export const AdminDashboard: React.FC = () => {
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>(initialBranchId);
 
-  const [activeTab, setActiveTab] = useState<'matrix' | 'staff' | 'overview' | 'orders' | 'firebase'>('matrix');
+  const [activeTab, setActiveTab] = useState<'matrix' | 'staff' | 'overview' | 'orders' | 'firebase'>(initialTab);
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
+
   const [branchStats, setBranchStats] = useState<BranchStats[]>([]);
   const [globalStats, setGlobalStats] = useState<{
     branchesCount: number;
@@ -431,6 +443,20 @@ export const AdminDashboard: React.FC = () => {
 
   // Estadísticas del local activo
   const currentBranchMetric = branchStats.find((s) => s.branchId === selectedBranchId);
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center bg-[#fef8f1] font-['Plus_Jakarta_Sans',sans-serif]">
+        <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4 text-3xl font-bold shadow-inner">
+          ⛔
+        </div>
+        <h2 className="text-xl font-['Epilogue',sans-serif] font-black text-[#00223a]">Acceso Restringido</h2>
+        <p className="text-sm text-[#73777e] mt-2 max-w-md">
+          Esta vista es exclusiva para Administradores de La Barra Sabrosísimo. Tu perfil actual (<strong className="text-[#ea580c]">{user?.role}</strong>) no cuenta con permisos administrativos.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full max-w-full overflow-x-hidden bg-[#fef8f1] text-[#1d1b17] p-3 sm:p-6 pb-24 font-['Plus_Jakarta_Sans',sans-serif]">
