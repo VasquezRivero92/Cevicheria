@@ -60,6 +60,21 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       setLastOrderEvent({ type: 'catalog:availability_changed', payload: data, timestamp: Date.now() });
     });
 
+    s.on('catalog:product_created', (data: any) => {
+      console.log('✨ Nuevo plato agregado a la carta:', data);
+      setLastOrderEvent({ type: 'catalog:product_created', payload: data, timestamp: Date.now() });
+    });
+
+    s.on('catalog:product_updated', (data: any) => {
+      console.log('✏️ Plato actualizado en la carta:', data);
+      setLastOrderEvent({ type: 'catalog:product_updated', payload: data, timestamp: Date.now() });
+    });
+
+    s.on('catalog:product_deleted', (data: any) => {
+      console.log('🗑️ Plato retirado de la carta:', data);
+      setLastOrderEvent({ type: 'catalog:product_deleted', payload: data, timestamp: Date.now() });
+    });
+
     setSocket(s);
 
     return () => {

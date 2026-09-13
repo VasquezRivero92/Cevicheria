@@ -81,6 +81,10 @@ router.post('/branch-availability', async (req: Request, res: Response) => {
 router.post('/products', async (req: Request, res: Response) => {
   try {
     const product = await catalogService.createProduct(req.body);
+    const io = getSocketServer();
+    if (io) {
+      io.emit('catalog:product_created', product);
+    }
     return res.status(201).json(product);
   } catch (err: any) {
     return res.status(400).json({ error: err.message });
@@ -92,9 +96,28 @@ router.put('/products/:id', async (req: Request, res: Response) => {
   try {
     const updated = await catalogService.updateProduct(req.params.id, req.body);
     if (!updated) return res.status(404).json({ error: 'Producto no encontrado' });
+    const io = getSocketServer();
+    if (io) {
+      io.emit('catalog:product_updated', updated);
+    }
     return res.json(updated);
   } catch (err: any) {
     return res.status(400).json({ error: err.message });
+  }
+});
+
+// Eliminar producto de la carta
+router.delete('/products/:id', async (req: Request, res: Response) => {
+  try {
+    const deleted = await catalogService.deleteProduct(req.params.id);
+    if (!deleted) return res.status(404).json({ error: 'Producto no encontrado' });
+    const io = getSocketServer();
+    if (io) {
+      io.emit('catalog:product_deleted', { productId: req.params.id });
+    }
+    return res.json({ success: true, message: 'Producto eliminado correctamente' });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
   }
 });
 

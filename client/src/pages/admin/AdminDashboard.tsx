@@ -16,7 +16,9 @@ import {
   UserPlus,
   Lock,
   KeyRound,
-  Pencil
+  Pencil,
+  Plus,
+  Trash2
 } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
@@ -61,6 +63,17 @@ export const AdminDashboard: React.FC = () => {
   const [newStaffBranchIds, setNewStaffBranchIds] = useState<string[]>([initialBranchId]);
   const [newStaffActive, setNewStaffActive] = useState<boolean>(true);
   const [isSavingStaff, setIsSavingStaff] = useState<boolean>(false);
+
+  // Modal para Agregar / Editar Plato de la Carta
+  const [isProductModalOpen, setIsProductModalOpen] = useState<boolean>(false);
+  const [editingProduct, setEditingProduct] = useState<BranchProductView | null>(null);
+  const [productFormName, setProductFormName] = useState<string>('');
+  const [productFormDescription, setProductFormDescription] = useState<string>('');
+  const [productFormCategoryId, setProductFormCategoryId] = useState<string>('');
+  const [productFormBasePrice, setProductFormBasePrice] = useState<string>('');
+  const [productFormSpiceAllowed, setProductFormSpiceAllowed] = useState<boolean>(false);
+  const [productFormSides, setProductFormSides] = useState<string>('Camote glaseado, Choclo tierno, Canchita chulpi');
+  const [isSavingProduct, setIsSavingProduct] = useState<boolean>(false);
 
   // Sincronizar selectedBranchId cuando cambie userBranches o currentBranch
   useEffect(() => {
@@ -159,7 +172,12 @@ export const AdminDashboard: React.FC = () => {
     if (!lastOrderEvent) return;
     loadStats();
     loadOrdersHistory();
-    if (lastOrderEvent.type === 'catalog:availability_changed') {
+    if (
+      lastOrderEvent.type === 'catalog:availability_changed' ||
+      lastOrderEvent.type === 'catalog:product_created' ||
+      lastOrderEvent.type === 'catalog:product_updated' ||
+      lastOrderEvent.type === 'catalog:product_deleted'
+    ) {
       if (selectedBranchId) {
         loadBranchProducts(selectedBranchId);
       }
@@ -206,6 +224,118 @@ export const AdminDashboard: React.FC = () => {
       console.error(err);
     } finally {
       setIsUpdating(false);
+    }
+  };
+
+  // Abrir modal para crear nuevo plato
+  const handleOpenCreateProduct = () => {
+    setEditingProduct(null);
+    setProductFormName('');
+    setProductFormDescription('');
+    setProductFormCategoryId(categories[0]?.id || 'cat_ceviches');
+    setProductFormBasePrice('');
+    setProductFormSpiceAllowed(false);
+    setProductFormSides('Camote glaseado, Choclo tierno, Canchita chulpi');
+    setIsProductModalOpen(true);
+  };
+
+  // Abrir modal para editar plato existente
+  const handleOpenEditProduct = (p: BranchProductView) => {
+    setEditingProduct(p);
+    setProductFormName(p.name);
+    setProductFormDescription(p.description || '');
+    setProductFormCategoryId(p.categoryId);
+    setProductFormBasePrice(p.basePrice.toString());
+    setProductFormSpiceAllowed(p.spiceAllowed || false);
+    setProductFormSides(p.sidesAllowed ? p.sidesAllowed.join(', ') : '');
+    setIsProductModalOpen(true);
+  };
+
+  // Guardar (crear o editar) plato en la carta
+  const handleSaveProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!productFormName.trim() || !productFormBasePrice) {
+      alert('Por favor completa el nombre y precio del plato.');
+      return;
+    }
+
+    const priceNum = parseFloat(productFormBasePrice);
+    if (isNaN(priceNum) || priceNum <= 0) {
+      alert('Ingresa un precio válido mayor a 0.');
+      return;
+    }
+
+    setIsSavingProduct(true);
+    try {
+      const sidesArray = productFormSides
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean);
+
+      const payload = {
+        name: productFormName.trim(),
+        description: productFormDescription.trim(),
+        categoryId: productFormCategoryId || (categories[0]?.id || 'cat_ceviches'),
+        basePrice: priceNum,
+        spiceAllowed: productFormSpiceAllowed,
+        sidesAllowed: sidesArray,
+        active: true
+      };
+
+      if (editingProduct) {
+        // Actualizar plato
+        const res = await fetch(`/api/catalog/products/${editingProduct.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.error || 'Error al actualizar el plato');
+        }
+      } else {
+        // Crear nuevo plato
+        const res = await fetch('/api/catalog/products', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.error || 'Error al crear el plato');
+        }
+      }
+
+      setIsProductModalOpen(false);
+      if (selectedBranchId) {
+        await loadBranchProducts(selectedBranchId);
+      }
+    } catch (err: any) {
+      alert(err.message || 'Error al guardar plato');
+    } finally {
+      setIsSavingProduct(false);
+    }
+  };
+
+  // Quitar / Eliminar plato de la carta
+  const handleDeleteProduct = async (productId: string, productName: string) => {
+    if (!confirm(`¿Estás seguro de quitar "${productName}" de la carta de forma definitiva?`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/catalog/products/${productId}`, {
+        method: 'DELETE'
+      });
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || 'Error al eliminar el plato');
+      }
+      if (selectedBranchId) {
+        await loadBranchProducts(selectedBranchId);
+      }
+    } catch (err: any) {
+      alert(err.message || 'Error al eliminar el plato');
     }
   };
 
@@ -493,6 +623,14 @@ export const AdminDashboard: React.FC = () => {
               <span className="text-xs font-bold text-cyan-900 bg-white px-3 py-1.5 rounded-xl border border-cyan-200 shadow-sm">
                 Total Platos: {branchProducts.length}
               </span>
+              <button
+                onClick={handleOpenCreateProduct}
+                className="bg-[#fc772a] hover:bg-[#e05e16] text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-md flex items-center gap-1.5 transition-all"
+                title="Agregar nuevo plato a la carta"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Agregar Plato</span>
+              </button>
             </div>
           </div>
 
@@ -586,17 +724,36 @@ export const AdminDashboard: React.FC = () => {
                       </td>
 
                       <td className="py-3.5 px-4 text-right">
-                        <button
-                          disabled={isUpdating}
-                          onClick={() => handleToggleProductAvailability(p.id, isAvailable, p.name)}
-                          className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all shadow-sm ${
-                            isAvailable
-                              ? 'bg-red-50 hover:bg-red-100 text-red-700 border border-red-200'
-                              : 'bg-emerald-600 hover:bg-emerald-500 text-white'
-                          }`}
-                        >
-                          {isAvailable ? 'Marcar Agotado' : 'Habilitar Plato'}
-                        </button>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            disabled={isUpdating}
+                            onClick={() => handleToggleProductAvailability(p.id, isAvailable, p.name)}
+                            className={`px-2.5 py-1.5 rounded-xl font-bold text-[11px] transition-all shadow-sm ${
+                              isAvailable
+                                ? 'bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200'
+                                : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                            }`}
+                            title={isAvailable ? 'Bloquear venta hoy en esta sede' : 'Habilitar venta'}
+                          >
+                            {isAvailable ? 'Agotar' : 'Habilitar'}
+                          </button>
+
+                          <button
+                            onClick={() => handleOpenEditProduct(p)}
+                            className="p-1.5 text-slate-600 hover:text-cyan-700 hover:bg-cyan-50 border border-slate-200 rounded-xl transition-colors"
+                            title="Editar nombre, precio o categoría"
+                          >
+                            <Pencil className="w-3.5 h-3.5" />
+                          </button>
+
+                          <button
+                            onClick={() => handleDeleteProduct(p.id, p.name)}
+                            className="p-1.5 text-rose-600 hover:text-rose-800 hover:bg-rose-50 border border-rose-200 rounded-xl transition-colors"
+                            title="Quitar plato definitivamente de la carta"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -1053,6 +1210,143 @@ export const AdminDashboard: React.FC = () => {
                   {isSavingStaff
                     ? 'Guardando...'
                     : (editingUser ? 'Guardar Cambios del Usuario' : `Guardar y Asignar a ${newStaffBranchIds.length} Sede(s)`)}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: AGREGAR O EDITAR PLATO DE LA CARTA */}
+      {isProductModalOpen && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white w-full max-w-lg rounded-3xl p-6 shadow-2xl animate-in zoom-in-95 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-2xl bg-orange-100 text-[#fc772a] flex items-center justify-center">
+                  <Plus className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-['Epilogue',sans-serif] font-black text-lg text-slate-900">
+                    {editingProduct ? 'Editar Plato de la Carta' : 'Agregar Nuevo Plato a la Carta'}
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    {editingProduct ? 'Modifica los detalles del plato oficial' : 'Aparecerá en el comandero de mozos y carta digital'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsProductModalOpen(false)}
+                className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveProduct} className="space-y-4 text-xs">
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Nombre del Plato / Producto:</label>
+                <input
+                  type="text"
+                  value={productFormName}
+                  onChange={(e) => setProductFormName(e.target.value)}
+                  placeholder="Ej. Ceviche Mixto Especial La Barra"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold text-sm"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Categoría:</label>
+                  <select
+                    value={productFormCategoryId}
+                    onChange={(e) => setProductFormCategoryId(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.icon ? `${c.icon} ` : ''}{c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Precio Oficial (S/):</label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 font-bold text-slate-400">S/</span>
+                    <input
+                      type="number"
+                      step="0.50"
+                      min="1"
+                      value={productFormBasePrice}
+                      onChange={(e) => setProductFormBasePrice(e.target.value)}
+                      placeholder="35.00"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-2 text-slate-800 font-black text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Descripción / Ingredientes:</label>
+                <textarea
+                  rows={2}
+                  value={productFormDescription}
+                  onChange={(e) => setProductFormDescription(e.target.value)}
+                  placeholder="Ej. Pesca artesanal fresca del día, pulpo, langostinos, conchas de abanico, cebolla morada y ají limo picadito."
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Opciones de Preparación en Cocina:</label>
+                <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-3">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={productFormSpiceAllowed}
+                      onChange={(e) => setProductFormSpiceAllowed(e.target.checked)}
+                      className="rounded text-orange-600 focus:ring-orange-500 w-4 h-4 cursor-pointer"
+                    />
+                    <span className="font-bold text-slate-800">
+                      🌶️ ¿Permite elegir nivel de picor? (Sin ají, Medio, Bravo, Fuego)
+                    </span>
+                  </label>
+
+                  <div>
+                    <span className="block font-semibold text-slate-600 mb-1">
+                      Guarniciones disponibles (separadas por coma):
+                    </span>
+                    <input
+                      type="text"
+                      value={productFormSides}
+                      onChange={(e) => setProductFormSides(e.target.value)}
+                      placeholder="Camote glaseado, Choclo tierno, Canchita chulpi, Chifle piurano"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-slate-800 text-xs focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsProductModalOpen(false)}
+                  className="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-2xl transition-all"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSavingProduct}
+                  className="w-2/3 bg-[#fc772a] hover:bg-[#e05e16] text-white font-['Epilogue',sans-serif] font-bold py-3 rounded-2xl shadow-lg shadow-[#fc772a]/20 transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+                >
+                  {isSavingProduct
+                    ? 'Guardando...'
+                    : (editingProduct ? 'Guardar Cambios del Plato' : 'Guardar y Publicar en la Carta')}
                 </button>
               </div>
             </form>

@@ -144,7 +144,12 @@ export const WaiterView: React.FC = () => {
     ) {
       loadActiveOrders();
     }
-    if (lastOrderEvent.type === 'catalog:availability_changed') {
+    if (
+      lastOrderEvent.type === 'catalog:availability_changed' ||
+      lastOrderEvent.type === 'catalog:product_created' ||
+      lastOrderEvent.type === 'catalog:product_updated' ||
+      lastOrderEvent.type === 'catalog:product_deleted'
+    ) {
       loadBranchCatalog();
     }
   }, [lastOrderEvent]);

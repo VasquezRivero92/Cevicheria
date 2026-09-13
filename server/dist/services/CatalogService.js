@@ -41,4 +41,7 @@ export class CatalogService {
     async updateProduct(id, updates) {
         return this.repos.productRepo.update(id, updates);
     }
+    async deleteProduct(id) {
+        return this.repos.productRepo.delete(id);
+    }
 }

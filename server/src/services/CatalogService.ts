@@ -64,4 +64,8 @@ export class CatalogService {
   async updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
     return this.repos.productRepo.update(id, updates);
   }
+
+  async deleteProduct(id: string): Promise<boolean> {
+    return this.repos.productRepo.delete(id);
+  }
 }
